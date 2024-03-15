@@ -7,9 +7,19 @@
 
 import SwiftUI
 import SwiftData
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
 
 @main
 struct RestaurantsAppApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -23,9 +33,11 @@ struct RestaurantsAppApp: App {
         }
     }()
 
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+            
         }
         .modelContainer(sharedModelContainer)
     }

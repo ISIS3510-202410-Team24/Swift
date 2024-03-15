@@ -20,11 +20,23 @@ struct login_page: View {
             
             
             TabView(selection: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Selection@*/.constant(1)/*@END_MENU_TOKEN@*/) {
-                SignInView().tabItem { Text("Sign In") }.tag(1)
-                SignUpView().tabItem { Text("Log In") }.tag(2)
-            }.tabViewStyle(DefaultTabViewStyle())
+                SignInView()
+                        .tabItem {
+                            Text("Sign In")
+                                .font(.headline)
+                        }
+                        .tag(1)
+                        .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
+                    
+                    SignUpView()
+                        .tabItem {
+                            Text("Log In")
+                                .font(.largeTitle)
+                        }
+                        .tag(2)
+                        .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
+            }.imageScale(.large)
             
-
         }
 
         .background(Color("Blue"))
