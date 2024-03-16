@@ -1,21 +1,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showProfile = false
     var body: some View {
-        VStack(alignment: .center) {
-    
-                VStack {
-                    HeaderView(title: "Home", profileButtonAction: {
-                        // Acción cuando se presiona el botón de perfil del usuario
-                        print("Perfil del usuario consultado")
-                    })
+        ZStack {
+            VStack(alignment: .center) {
+        
+                    VStack {
+                        HeaderView(title: "Home", profileButtonAction: {
+                            showProfile.toggle()
+                        })
 
+                    
+                }
                 
+                BottomNavigationBar()
             }
-            
-            // Agrega BottomNavigationBar fuera del NavigationView
-            BottomNavigationBar()
+            SideProfileView(isShowing: $showProfile)
         }
+        
+        
     }
 }
 

@@ -11,36 +11,41 @@ struct login_page: View {
     
     var body: some View {
         VStack {
-            ZStack {  }
-            .frame(width: 200, height: 200)
-            .background(.white)
-
-            .cornerRadius(894)
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 360, height: 360)
+              .background(
+                Image("login_image")
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 360, height: 360)
+                  .clipped()
+              )
             
             
             
-            TabView(selection: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Selection@*/.constant(1)/*@END_MENU_TOKEN@*/) {
+            
+            TabView(selection: .constant(1)) {
                 SignInView()
-                        .tabItem {
-                            Text("Sign In")
-                                .font(.headline)
-                        }
-                        .tag(1)
-                        .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
-                    
-                    SignUpView()
-                        .tabItem {
-                            Text("Log In")
-                                .font(.largeTitle)
-                        }
-                        .tag(2)
-                        .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
+                    .tabItem {
+                        Text("Sign In")
+                            .font(.headline)
+                    }
+                    .tag(1)
+                    .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
+                
+                SignUpView()
+                    .tabItem {
+                        Text("Sing up")
+                            .font(.largeTitle)
+                    }
+                    .tag(2)
+                    .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
             }.imageScale(.large)
             
         }
-
-        .background(Color("Blue"))
-    }
+        
+        .background(Color(red: 224/255, green: 226/255, blue: 231/255))    }
 }
 
 
