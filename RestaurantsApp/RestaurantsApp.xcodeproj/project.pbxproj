@@ -16,10 +16,6 @@
 		170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170631622BA4DB0C00C7FDB1 /* loginView.swift */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
 		7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */; };
-		7E484D082BA63D340005C093 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E484D072BA63D340005C093 /* GoogleService-Info.plist */; };
-		7E484D092BA63D340005C093 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E484D072BA63D340005C093 /* GoogleService-Info.plist */; };
-		7E484D0A2BA63D340005C093 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E484D072BA63D340005C093 /* GoogleService-Info.plist */; };
-		7E484D0D2BA63E840005C093 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7E484D0C2BA63E840005C093 /* FirebaseAnalytics */; };
 		8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC8D2B8CDD5900D1592E /* RestaurantsAppApp.swift */; };
 		8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC8F2B8CDD5900D1592E /* ContentView.swift */; };
 		8224EC922B8CDD5900D1592E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC912B8CDD5900D1592E /* Item.swift */; };
@@ -58,7 +54,6 @@
 		170631622BA4DB0C00C7FDB1 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
-		7E484D072BA63D340005C093 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8224EC8D2B8CDD5900D1592E /* RestaurantsAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppApp.swift; sourceTree = "<group>"; };
 		8224EC8F2B8CDD5900D1592E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -79,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E484D0D2BA63E840005C093 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +146,6 @@
 		8224EC8C2B8CDD5900D1592E /* RestaurantsApp */ = {
 			isa = PBXGroup;
 			children = (
-				7E484D072BA63D340005C093 /* GoogleService-Info.plist */,
 				170631572BA4C24400C7FDB1 /* views */,
 				170631542BA4C1C000C7FDB1 /* components */,
 				82D9DA582B96AD710068A8F5 /* Search_page.swift */,
@@ -209,9 +202,6 @@
 			dependencies = (
 			);
 			name = RestaurantsApp;
-			packageProductDependencies = (
-				7E484D0C2BA63E840005C093 /* FirebaseAnalytics */,
-			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -284,9 +274,6 @@
 				Base,
 			);
 			mainGroup = 8224EC812B8CDD5900D1592E;
-			packageReferences = (
-				7E484D0B2BA63E840005C093 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-			);
 			productRefGroup = 8224EC8B2B8CDD5900D1592E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -304,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */,
-				7E484D082BA63D340005C093 /* GoogleService-Info.plist in Resources */,
 				8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */,
 				8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */,
 			);
@@ -314,7 +300,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E484D092BA63D340005C093 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +307,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E484D0A2BA63D340005C093 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,25 +679,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7E484D0B2BA63E840005C093 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.22.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7E484D0C2BA63E840005C093 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7E484D0B2BA63E840005C093 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8224EC822B8CDD5900D1592E /* Project object */;
 }
