@@ -7,9 +7,14 @@
 
 import SwiftUI
 import SwiftData
-
+import Firebase
 @main
 struct RestaurantsAppApp: App {
+    
+    init(){
+        FirebaseApp.configure()
+    }
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,

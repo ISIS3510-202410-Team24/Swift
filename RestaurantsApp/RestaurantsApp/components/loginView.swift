@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct login_page: View {
-    
+    @Binding var isLoggedIn: Bool
     var body: some View {
         VStack {
             Rectangle()
@@ -26,7 +27,7 @@ struct login_page: View {
             
             
             TabView(selection: .constant(1)) {
-                SignInView()
+                SignInView(isLoggedIn: $isLoggedIn)
                     .tabItem {
                         Text("Sign In")
                             .font(.headline)
@@ -34,7 +35,7 @@ struct login_page: View {
                     .tag(1)
                     .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
                 
-                SignUpView()
+                SignUpView(isLoggedIn: $isLoggedIn)
                     .tabItem {
                         Text("Sing up")
                             .font(.largeTitle)
@@ -50,10 +51,11 @@ struct login_page: View {
 
 
 struct SignInView: View {
+    @Binding var isLoggedIn: Bool
     @State private var email = ""
     @State private var password = ""
     @State private var isPasswordVisible = false
-    
+    @State private var userIsLoggedIn = false
     var body: some View {
         VStack(spacing: 20) {
             HStack {
@@ -115,16 +117,30 @@ struct SignInView: View {
             }
             
             Button("Sign in") {
-                // Action
+                login(isLoggedIn: $isLoggedIn)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .frame(width: 327, height: 52, alignment: .center)
             .background(Color(red: 0.56, green: 0.56, blue: 0.56))
             .cornerRadius(8)
+        }.onAppear{
+            Auth.auth().addStateDidChangeListener{ auth, user in
+                if user != nil {
+                    userIsLoggedIn.toggle()
+                }
+            }
         }
         .padding(10)
         
+        
+    }
+    func login(isLoggedIn: Binding<Bool>) {
+        Auth.auth().signIn(withEmail: email, password: password){result, error in
+            if error != nil{
+                print(error!.localizedDescription)
+            }else{
+                isLoggedIn.wrappedValue = true            }}
     }
 }
 
@@ -132,6 +148,7 @@ struct SignInView: View {
 
 
 struct SignUpView: View {
+    @Binding var isLoggedIn: Bool
     @State private var email = ""
     @State private var name = ""
     @State private var password = ""
@@ -155,14 +172,6 @@ struct SignUpView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color(red: 0.1, green: 0.1, blue: 0.1), lineWidth: 2)
             )
-            
-            
-            
-            
-            
-            
-            
-            
             HStack {
                 Image(systemName: "envelope")
                     .foregroundColor(.gray)
@@ -207,7 +216,7 @@ struct SignUpView: View {
             
             
             Button("Sign up") {
-                // Action
+                register(isLoggedIn: self.$isLoggedIn)
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -215,7 +224,18 @@ struct SignUpView: View {
             .background(Color(red: 0.56, green: 0.56, blue: 0.56))
             .cornerRadius(8)
         }.padding(10)
-
+        
+        
+        
+        
+    }
+    func register(isLoggedIn: Binding<Bool>){
+        Auth.auth().createUser(withEmail: email, password: password){ result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }else{
+                isLoggedIn.wrappedValue = true
+            }}
     }
 }
 
@@ -223,6 +243,6 @@ struct SignUpView: View {
     struct LoginPage_Previews: PreviewProvider {
         static var previews: some View {
             
-            login_page()
+            login_page(isLoggedIn: .constant(false))
         }
     }
