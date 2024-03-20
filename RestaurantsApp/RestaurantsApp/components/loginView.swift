@@ -14,19 +14,6 @@ struct login_page: View {
 
     var body: some View {
         VStack {
-            Rectangle()
-              .foregroundColor(.clear)
-              .frame(width: 360, height: 360)
-              .background(
-                Image("login_image")
-                  .resizable()
-                  .aspectRatio(contentMode: .fill)
-                  .frame(width: 360, height: 360)
-                  .clipped()
-              )
-            
-            
-            
             
             TabView(selection: .constant(1)) {
                 SignInView(LoginModel: LoginModel)
@@ -46,7 +33,7 @@ struct login_page: View {
                     .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
             }.imageScale(.large)
             
-        }
+        }.edgesIgnoringSafeArea(.top)
         
         .background(Color(red: 224/255, green: 226/255, blue: 231/255))    }
 }
@@ -58,74 +45,91 @@ struct SignInView: View {
     @State private var isPasswordVisible = false
     @State private var userIsLoggedIn = false
     var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                Image(systemName: "envelope")
-                    .foregroundColor(.gray)
-                    .padding(.leading, 10)
-                
-                TextField("Email", text: $LoginModel.email)
-                    .padding(15)
-                    .keyboardType(.emailAddress)
-            }
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .shadow(color: Color.black.opacity(0.16), radius: 2, x: 0, y: 4)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(red: 0.1, green: 0.1, blue: 0.1), lineWidth: 2)
-            )
+
             
-            HStack {
-                Image(systemName: "lock")
-                    .foregroundColor(.gray)
-                    .padding(.leading, 15)
-                
-                if isPasswordVisible {
-                    TextField("Password", text: $LoginModel.password)
-                        .padding(15)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                } else {
-                    SecureField("Password", text: $LoginModel.password)
-                        .padding(15)
-                        .keyboardType(.default)
-                        .disableAutocorrection(true)
-                }
-                
+            VStack(spacing: 20) {
+                Rectangle()
+                  .foregroundColor(.clear)
+                  .frame(width: 360, height: 360)
+                  .background(
+                    Image("login_image")
+                      .resizable()
+                      .aspectRatio(contentMode: .fill)
+                      .frame(width: 360, height: 360)
+                      .clipped()
+                  )
                 Spacer()
-                
-                Button(action: {
-                    isPasswordVisible.toggle()
-                }) {
-                    Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+
+                HStack {
+                    Image(systemName: "envelope")
                         .foregroundColor(.gray)
-                        .padding(.trailing, 10)
+                        .padding(.leading, 10)
+                    
+                    TextField("Email", text: $LoginModel.email)
+                        .padding(15)
+                        .keyboardType(.emailAddress)
+                        .disableAutocorrection(true)
+
                 }
-            }
-            .background(Color.white)
-            .clipShape(RoundedRectangle(cornerRadius: 8))
-            .shadow(color: Color.black.opacity(0.16), radius: 2, x: 0, y: 4)
-            .overlay(
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color(red: 0.1, green: 0.1, blue: 0.1), lineWidth: 2)
-            )
-            
-            HStack {
-                Spacer()
-                Text("Forgot Password?")
-                    .underline(true)
-            }
-            
-            Button("Sign in") {
-                LoginModel.login()
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .frame(width: 327, height: 52, alignment: .center)
-            .background(Color(red: 0.56, green: 0.56, blue: 0.56))
-            .cornerRadius(8)
-        }.onAppear(perform:LoginModel.authenticate)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .shadow(color: Color.black.opacity(0.16), radius: 2, x: 0, y: 4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color(red: 0.1, green: 0.1, blue: 0.1), lineWidth: 2)
+                )
+                
+                HStack {
+                    Image(systemName: "lock")
+                        .foregroundColor(.gray)
+                        .padding(.leading, 15)
+                    
+                    if isPasswordVisible {
+                        TextField("Password", text: $LoginModel.password)
+                            .padding(15)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                    } else {
+                        SecureField("Password", text: $LoginModel.password)
+                            .padding(15)
+                            .keyboardType(.default)
+                            .disableAutocorrection(true)
+                    }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        isPasswordVisible.toggle()
+                    }) {
+                        Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
+                            .foregroundColor(.gray)
+                            .padding(.trailing, 10)
+                    }
+                }
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .shadow(color: Color.black.opacity(0.16), radius: 2, x: 0, y: 4)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color(red: 0.1, green: 0.1, blue: 0.1), lineWidth: 2)
+                )
+                
+                HStack {
+                    Spacer()
+                    Text("Forgot Password?")
+                        .underline(true)
+                }
+                
+                Button("Sign in") {
+                    LoginModel.login()
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .frame(width: 327, height: 52, alignment: .center)
+                .background(Color(red: 0.56, green: 0.56, blue: 0.56))
+                .cornerRadius(8)
+            }.edgesIgnoringSafeArea(.top)
+            .onAppear(perform:LoginModel.authenticate)
         .padding(10)
         
         
@@ -143,6 +147,17 @@ struct SignUpView: View {
     var body: some View {
         VStack(spacing: 20) {
             
+            Rectangle()
+              .foregroundColor(.clear)
+              .frame(width: 360, height: 360)
+              .background(
+                Image("login_image")
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+                  .frame(width: 360, height: 360)
+                  .clipped()
+              )
+            Spacer()
             HStack {
                 Image(systemName: "person")
                     .foregroundColor(.gray)

@@ -32,6 +32,7 @@ class LoginViewModel: ObservableObject{
             if let error = error {
                 print(error.localizedDescription)
             } else {
+                print("Accedio usuario")
                 self.saveCredentialsLocally()
                 self.isLoggedIn = true
             }
