@@ -125,7 +125,7 @@ struct SignInView: View {
             .frame(width: 327, height: 52, alignment: .center)
             .background(Color(red: 0.56, green: 0.56, blue: 0.56))
             .cornerRadius(8)
-        }
+        }.onAppear(perform:LoginModel.authenticate)
         .padding(10)
         
         
