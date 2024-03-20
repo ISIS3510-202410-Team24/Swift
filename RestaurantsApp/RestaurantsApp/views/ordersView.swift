@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ordersView: View {
+    @StateObject var viewModel = RestaurantViewModel()
     var body: some View {
         
         // Stack Principal
@@ -35,8 +36,16 @@ struct ordersView: View {
             
             // Stack Vertical para las ordenes Actuales
             VStack(alignment: .leading, spacing: 10) {
-                RestaurantCardView()
-                RestaurantCardView()
+                if let document = viewModel.document {
+                    RestaurantCardView(document: document)
+                } else {
+                    ProgressView() // Muestra un indicador de progreso mientras se cargan los datos
+                }
+            }
+            .onAppear {
+                viewModel.fetchData() // Se llama para cargar los datos cuando la vista aparece
+            }
+               // RestaurantCardView()
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 0)
@@ -63,22 +72,27 @@ struct ordersView: View {
             
             // Stack vertical para el historial de Pedidos
             VStack(alignment: .leading, spacing: 10) {
-                RestaurantCardView()
-                RestaurantCardView()
+                if let document = viewModel.document {
+                    RestaurantCardView(document: document)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 0)
+                        .frame(maxWidth: .infinity, minHeight: 223, maxHeight: 223, alignment: .topLeading)
+                } else {
+                    //ProgressView() // Muestra un indicador de progreso mientras se cargan los datos
+                }
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 0)
-            .frame(maxWidth: .infinity, minHeight: 223, maxHeight: 223, alignment: .topLeading)
+            .padding(.horizontal, 0)
+            .padding(.top, 24)
+            .padding(.bottom, 0)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+            .background(Color.white)
             
         }
-        .padding(.horizontal, 0)
-        .padding(.top, 24)
-        .padding(.bottom, 0)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-        .background(Color.white)
-    }
         
-}
+    }
+
+        
+
 
 #Preview {
     ordersView()

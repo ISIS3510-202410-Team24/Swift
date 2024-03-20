@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 // Colors
 let backroundColor = Color(UIColor(named: "Background")!)
 let blueColor = Color(UIColor(named: "Blue")!)
-
-
+let pinkColor = Color(UIColor(named: "Pink")!)
 
 struct RestaurantCardView: View {
+    var document: DocumentSnapshot // El documento obtenido de Firestore
     var body: some View {
         
             // Stack horizontal de toda la tarjeta
@@ -24,12 +25,13 @@ struct RestaurantCardView: View {
                 HStack(alignment: .center, spacing: 10) {
                     // M3/body/large
                     VStack {
-                        Text("El Corral\n#17 Cra. 9")
+                        Text(document["nombre"] as? String ?? "Nombre del restaurante")
                             .font(Font.custom("Roboto", size: 16))
                             .kerning(0.5)
                             .foregroundColor(.black)
                         // M3/body/small
-                        Text("12.000 COP")
+                        Text("\(document["valor"] as? Int ?? 0) COP")
+
                           .font(Font.custom("Roboto", size: 12))
                           .multilineTextAlignment(.center)
                           .foregroundColor(blueColor)
@@ -51,7 +53,7 @@ struct RestaurantCardView: View {
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
                     .frame(width: 55, height: 17, alignment: .center)
-                    .background(backroundColor)
+                    .background(pinkColor)
                     .cornerRadius(32)
                     .overlay(
                       RoundedRectangle(cornerRadius: 32)
@@ -92,6 +94,6 @@ struct RestaurantCardView: View {
     }
 }
 
-#Preview {
-    RestaurantCardView()
-}
+//#Preview {
+//    RestaurantCardView()
+//}

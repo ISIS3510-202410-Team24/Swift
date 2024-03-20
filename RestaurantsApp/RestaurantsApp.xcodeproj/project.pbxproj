@@ -32,6 +32,8 @@
 		93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */; };
 		93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854852BAB577000EF86F7 /* FireStoreManager.swift */; };
 		93C854882BAB57D100EF86F7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 93C854872BAB57D100EF86F7 /* FirebaseFirestore */; };
+		93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB5E852BAB74DB008739CF /* RestaurantViewModel.swift */; };
+		93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,8 @@
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
 		93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		93C854852BAB577000EF86F7 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
+		93CB5E852BAB74DB008739CF /* RestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,6 +213,8 @@
 			children = (
 				93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */,
 				93C854852BAB577000EF86F7 /* FireStoreManager.swift */,
+				93CB5E852BAB74DB008739CF /* RestaurantViewModel.swift */,
+				93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 				1706315D2BA4C50A00C7FDB1 /* restaurantsView.swift in Sources */,
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
+				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
 				170631612BA4CB0700C7FDB1 /* TopBar.swift in Sources */,
 				8224EC922B8CDD5900D1592E /* Item.swift in Sources */,
@@ -368,6 +375,7 @@
 				8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */,
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
+				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
