@@ -9,7 +9,9 @@ import SwiftUI
 import Firebase
 
 struct login_page: View {
-    @Binding var isLoggedIn: Bool
+    
+    @ObservedObject var LoginModel: LoginViewModel
+
     var body: some View {
         VStack {
             Rectangle()
@@ -27,7 +29,7 @@ struct login_page: View {
             
             
             TabView(selection: .constant(1)) {
-                SignInView(isLoggedIn: $isLoggedIn)
+                SignInView(LoginModel: LoginModel)
                     .tabItem {
                         Text("Sign In")
                             .font(.headline)
@@ -35,7 +37,7 @@ struct login_page: View {
                     .tag(1)
                     .frame(maxWidth: .infinity) // Ajustar el maxWidth de la pestaña
                 
-                SignUpView(isLoggedIn: $isLoggedIn)
+                SignUpView(LoginModel : LoginModel)
                     .tabItem {
                         Text("Sing up")
                             .font(.largeTitle)
@@ -51,9 +53,8 @@ struct login_page: View {
 
 
 struct SignInView: View {
-    @Binding var isLoggedIn: Bool
-    @State private var email = ""
-    @State private var password = ""
+    @ObservedObject var LoginModel: LoginViewModel
+
     @State private var isPasswordVisible = false
     @State private var userIsLoggedIn = false
     var body: some View {
@@ -63,7 +64,7 @@ struct SignInView: View {
                     .foregroundColor(.gray)
                     .padding(.leading, 10)
                 
-                TextField("Email", text: $email)
+                TextField("Email", text: $LoginModel.email)
                     .padding(15)
                     .keyboardType(.emailAddress)
             }
@@ -81,12 +82,12 @@ struct SignInView: View {
                     .padding(.leading, 15)
                 
                 if isPasswordVisible {
-                    TextField("Password", text: $password)
+                    TextField("Password", text: $LoginModel.password)
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
                 } else {
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $LoginModel.password)
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
@@ -117,41 +118,27 @@ struct SignInView: View {
             }
             
             Button("Sign in") {
-                login(isLoggedIn: $isLoggedIn)
+                LoginModel.login()
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .frame(width: 327, height: 52, alignment: .center)
             .background(Color(red: 0.56, green: 0.56, blue: 0.56))
             .cornerRadius(8)
-        }.onAppear{
-            Auth.auth().addStateDidChangeListener{ auth, user in
-                if user != nil {
-                    userIsLoggedIn.toggle()
-                }
-            }
         }
         .padding(10)
         
         
     }
-    func login(isLoggedIn: Binding<Bool>) {
-        Auth.auth().signIn(withEmail: email, password: password){result, error in
-            if error != nil{
-                print(error!.localizedDescription)
-            }else{
-                isLoggedIn.wrappedValue = true            }}
-    }
+    
 }
 
 
 
 
 struct SignUpView: View {
-    @Binding var isLoggedIn: Bool
-    @State private var email = ""
+    @ObservedObject var LoginModel: LoginViewModel
     @State private var name = ""
-    @State private var password = ""
     @State private var isPasswordVisible = false
     var body: some View {
         VStack(spacing: 20) {
@@ -177,7 +164,7 @@ struct SignUpView: View {
                     .foregroundColor(.gray)
                     .padding(.leading, 10)
                 
-                TextField("Email", text: $email)
+                TextField("Email", text: $LoginModel.email)
                     .padding(15)
                     .keyboardType(.emailAddress)
             }
@@ -195,12 +182,12 @@ struct SignUpView: View {
                     .padding(.leading, 15)
                 
                 if isPasswordVisible {
-                    TextField("Password", text: $password)
+                    TextField("Password", text: $LoginModel.password)
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
                 } else {
-                    SecureField("Password", text: $password)
+                    SecureField("Password", text: $LoginModel.password)
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
@@ -216,7 +203,7 @@ struct SignUpView: View {
             
             
             Button("Sign up") {
-                register(isLoggedIn: self.$isLoggedIn)
+                LoginModel.register()
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
@@ -229,20 +216,13 @@ struct SignUpView: View {
         
         
     }
-    func register(isLoggedIn: Binding<Bool>){
-        Auth.auth().createUser(withEmail: email, password: password){ result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }else{
-                isLoggedIn.wrappedValue = true
-            }}
-    }
+    
 }
 
 
     struct LoginPage_Previews: PreviewProvider {
         static var previews: some View {
             
-            login_page(isLoggedIn: .constant(false))
+            login_page(LoginModel: LoginViewModel())
         }
     }
