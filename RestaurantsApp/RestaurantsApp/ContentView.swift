@@ -3,13 +3,13 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showProfile = false
-    @State private var isLoggedIn1 = false
+    @StateObject var loginModel = LoginViewModel()
     var body: some View {
         
-        if isLoggedIn1{
+        if loginModel.isLoggedIn{
             return AnyView(content)
         } else {
-            return AnyView(login_page(isLoggedIn: $isLoggedIn1))
+            return AnyView(login_page(LoginModel: loginModel))
         }
         
     }
