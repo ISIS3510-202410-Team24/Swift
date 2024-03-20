@@ -8,6 +8,7 @@
 import SwiftUI
 import Firebase
 
+
 class LoginViewModel: ObservableObject{
     
     @Published var email = ""
@@ -36,9 +37,20 @@ class LoginViewModel: ObservableObject{
             if error != nil {
                 print(error!.localizedDescription)
             }else{
+                if let user = result?.user {
+                    // El usuario se ha creado exitosamente
+                    let userID = user.uid
+                    FirestoreManager().agregarDocumento(coleccion:"usuario",datos:["id":userID]){error in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        
+                    }
+                    print("Usuario creado con ID:", userID)}
                 
                 
                 self.isLoggedIn.toggle()
+                
             }}
     }
     
