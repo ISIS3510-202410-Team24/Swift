@@ -30,6 +30,8 @@
 		8224ECAE2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */; };
 		82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9DA582B96AD710068A8F5 /* Search_page.swift */; };
 		93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */; };
+		93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854852BAB577000EF86F7 /* FireStoreManager.swift */; };
+		93C854882BAB57D100EF86F7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 93C854872BAB57D100EF86F7 /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,7 @@
 		8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
 		93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		93C854852BAB577000EF86F7 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */,
+				93C854882BAB57D100EF86F7 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */,
+				93C854852BAB577000EF86F7 /* FireStoreManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 			name = RestaurantsApp;
 			packageProductDependencies = (
 				1714680C2BA8FBD200255D85 /* FirebaseAuth */,
+				93C854872BAB57D100EF86F7 /* FirebaseFirestore */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -361,6 +367,7 @@
 				1706315B2BA4C4EC00C7FDB1 /* homeView.swift in Sources */,
 				8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */,
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
+				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +739,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		93C854872BAB57D100EF86F7 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
