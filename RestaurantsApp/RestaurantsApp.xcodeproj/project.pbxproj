@@ -29,7 +29,12 @@
 		8224ECAC2B8CDD5C00D1592E /* RestaurantsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAB2B8CDD5C00D1592E /* RestaurantsAppUITests.swift */; };
 		8224ECAE2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */; };
 		82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9DA582B96AD710068A8F5 /* Search_page.swift */; };
+
 		93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */; };
+		931FE12A2BAB484100C509DD /* orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE1292BAB484100C509DD /* orders.swift */; };
+		931FE12C2BAB487700C509DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 931FE12B2BAB487700C509DD /* FirebaseFirestore */; };
+		931FE12E2BAB4B4F00C509DD /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,8 @@
 		8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
 		93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		931FE1292BAB484100C509DD /* orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orders.swift; sourceTree = "<group>"; };
+		931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */,
+				931FE12C2BAB487700C509DD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,10 +208,13 @@
 			path = RestaurantsAppUITests;
 			sourceTree = "<group>";
 		};
+
 		93C854822BAB31BD00EF86F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */,
+                931FE1292BAB484100C509DD /* orders.swift */,
+                931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 			name = RestaurantsApp;
 			packageProductDependencies = (
 				1714680C2BA8FBD200255D85 /* FirebaseAuth */,
+				931FE12B2BAB487700C509DD /* FirebaseFirestore */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -357,10 +369,12 @@
 				93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */,
 				170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */,
 				1706315F2BA4C52200C7FDB1 /* ordersView.swift in Sources */,
+				931FE12A2BAB484100C509DD /* orders.swift in Sources */,
 				170631592BA4C2DC00C7FDB1 /* promotionsView.swift in Sources */,
 				1706315B2BA4C4EC00C7FDB1 /* homeView.swift in Sources */,
 				8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */,
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
+				931FE12E2BAB4B4F00C509DD /* FireStoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -732,6 +746,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		931FE12B2BAB487700C509DD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
