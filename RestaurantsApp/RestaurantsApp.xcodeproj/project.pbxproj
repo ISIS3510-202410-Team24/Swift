@@ -29,9 +29,12 @@
 		8224ECAC2B8CDD5C00D1592E /* RestaurantsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAB2B8CDD5C00D1592E /* RestaurantsAppUITests.swift */; };
 		8224ECAE2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */; };
 		82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9DA582B96AD710068A8F5 /* Search_page.swift */; };
+
+		93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */; };
 		931FE12A2BAB484100C509DD /* orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE1292BAB484100C509DD /* orders.swift */; };
 		931FE12C2BAB487700C509DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 931FE12B2BAB487700C509DD /* FirebaseFirestore */; };
 		931FE12E2BAB4B4F00C509DD /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,7 @@
 		8224ECAB2B8CDD5C00D1592E /* RestaurantsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITests.swift; sourceTree = "<group>"; };
 		8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
+		93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		931FE1292BAB484100C509DD /* orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orders.swift; sourceTree = "<group>"; };
 		931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,7 +166,7 @@
 		8224EC8C2B8CDD5900D1592E /* RestaurantsApp */ = {
 			isa = PBXGroup;
 			children = (
-				931FE1282BAB481B00C509DD /* ModelView */,
+				93C854822BAB31BD00EF86F7 /* ViewModel */,
 				1714680E2BA901BF00255D85 /* GoogleService-Info.plist */,
 				170631572BA4C24400C7FDB1 /* views */,
 				170631542BA4C1C000C7FDB1 /* components */,
@@ -204,13 +208,15 @@
 			path = RestaurantsAppUITests;
 			sourceTree = "<group>";
 		};
-		931FE1282BAB481B00C509DD /* ModelView */ = {
+
+		93C854822BAB31BD00EF86F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				931FE1292BAB484100C509DD /* orders.swift */,
-				931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */,
+				93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */,
+                931FE1292BAB484100C509DD /* orders.swift */,
+                931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */,
 			);
-			path = ModelView;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +366,7 @@
 				8224EC922B8CDD5900D1592E /* Item.swift in Sources */,
 				7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */,
 				172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */,
+				93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */,
 				170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */,
 				1706315F2BA4C52200C7FDB1 /* ordersView.swift in Sources */,
 				931FE12A2BAB484100C509DD /* orders.swift in Sources */,
