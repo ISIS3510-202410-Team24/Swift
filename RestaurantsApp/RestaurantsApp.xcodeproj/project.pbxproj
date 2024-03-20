@@ -19,6 +19,7 @@
 		172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BA2BA8BC1E001F3937 /* SideProfileView.swift */; };
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
+		7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */; };
 		7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */; };
 		8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC8D2B8CDD5900D1592E /* RestaurantsAppApp.swift */; };
 		8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC8F2B8CDD5900D1592E /* ContentView.swift */; };
@@ -92,6 +93,7 @@
 			files = (
 				1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */,
 				93C854882BAB57D100EF86F7 /* FirebaseFirestore in Frameworks */,
+				7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +240,7 @@
 			packageProductDependencies = (
 				1714680C2BA8FBD200255D85 /* FirebaseAuth */,
 				93C854872BAB57D100EF86F7 /* FirebaseFirestore */,
+				7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -536,9 +539,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 4D7Z4HN354;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app wants to use your Face ID. Plaese Hit OK to activate Face ID";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -555,10 +559,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsApp;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -575,9 +581,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 4D7Z4HN354;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "This app wants to use your Face ID. Plaese Hit OK to activate Face ID";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -594,10 +601,12 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsApp;
+				NEW_SETTING = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -747,6 +756,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
 		};
 		93C854872BAB57D100EF86F7 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

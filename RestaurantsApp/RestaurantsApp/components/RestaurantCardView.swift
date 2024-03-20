@@ -29,6 +29,10 @@ struct RestaurantCardView: View {
                             .font(Font.custom("Roboto", size: 16))
                             .kerning(0.5)
                             .foregroundColor(.black)
+                        Text(document["direccion"] as? String ?? "Nombre del restaurante")
+                            .font(Font.custom("Roboto", size: 16))
+                            .kerning(0.5)
+                            .foregroundColor(.black)
                         // M3/body/small
                         Text("\(document["valor"] as? Int ?? 0) COP")
 
@@ -79,7 +83,7 @@ struct RestaurantCardView: View {
                 .padding(.vertical, 0)
                 .frame(maxWidth: .infinity, minHeight: 84, maxHeight: 84, alignment: .center)
                 .background(
-                    Image("Burguer")
+                    Image("Hamburguesa")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 84)
