@@ -13,29 +13,37 @@ struct HeaderView: View {
     let profileButtonAction: () -> Void
 
     var body: some View {
-        HStack (alignment: .center, spacing: 10) {
-            Button(action: profileButtonAction) {
-                Image(systemName: "line.3.horizontal")
-                    .font(.title)
+        ZStack{
+            
+            HStack (alignment: .center, spacing: 10) {
+                Button(action: profileButtonAction) {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.title)
+                }
+                .padding(.all)
+                
+                
+                
+                Spacer()
+                
+                Button(action: profileButtonAction) {
+                    Image(systemName: "cart")
+                        .font(.title)
+                }
+                Button(action: profileButtonAction) {
+                    Image(systemName: "person.circle")
+                        .font(.title)
+                        .padding(.trailing)
+                }
             }
-            .padding(.all)
-
-            Spacer()
+            
+            .background(Color.blue)
+            .foregroundColor(.white)
+            
             Text(title)
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
-            
-            Spacer()
-            
-            Button(action: profileButtonAction) {
-                Image(systemName: "person.circle")
-                    .font(.title)
-                    .padding(.all)
-            }
         }
-
-        .background(Color.blue)
-        .foregroundColor(.white)
     }
 }

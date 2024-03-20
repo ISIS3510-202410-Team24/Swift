@@ -1,20 +1,33 @@
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        VStack(alignment: .center) {
-    
-                VStack {
-                    HeaderView(title: "Home", profileButtonAction: {
-                        // Acción cuando se presiona el botón de perfil del usuario
-                        print("Perfil del usuario consultado")
-                    })
 
+struct ContentView: View {
+    @State private var showProfile = false
+    @State private var isLoggedIn1 = false
+    var body: some View {
+        
+        if isLoggedIn1{
+            return AnyView(content)
+        } else {
+            return AnyView(login_page(isLoggedIn: $isLoggedIn1))
+        }
+        
+    }
+    var content: some View {
+        ZStack {
+            VStack(alignment: .center) {
+        
+                    VStack {
+                        HeaderView(title: "Home", profileButtonAction: {
+                            showProfile.toggle()
+                        })
+
+                    
+                }
                 
+                BottomNavigationBar()
             }
-            
-            // Agrega BottomNavigationBar fuera del NavigationView
-            BottomNavigationBar()
+            SideProfileView(isShowing: $showProfile)
         }
     }
 }

@@ -88,6 +88,19 @@ struct RestaurantCardView: View {
               RoundedRectangle(cornerRadius: 8)
                 .inset(by: 0.5)
                 .stroke(.black, lineWidth: 1)
+                .onAppear{
+                    
+                    FirestoreManager.shared.leerDocumento(coleccion: "miColeccion", documentoID: "miDocumentoID") { documentSnapshot, error in
+                        if let error = error {
+                            print("Error al leer documento: \(error)")
+                        } else if let document = documentSnapshot, document.exists {
+                            let datos = document.data() ?? [:]
+                            print("Datos del documento: \(datos)")
+                        } else {
+                            print("Documento no encontrado")
+                        }
+                    }
+                }
             )
     }
 }

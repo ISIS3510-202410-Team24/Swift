@@ -14,6 +14,10 @@
 		1706315F2BA4C52200C7FDB1 /* ordersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1706315E2BA4C52200C7FDB1 /* ordersView.swift */; };
 		170631612BA4CB0700C7FDB1 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170631602BA4CB0700C7FDB1 /* TopBar.swift */; };
 		170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170631622BA4DB0C00C7FDB1 /* loginView.swift */; };
+		1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1714680C2BA8FBD200255D85 /* FirebaseAuth */; };
+		1714680F2BA901BF00255D85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1714680E2BA901BF00255D85 /* GoogleService-Info.plist */; };
+		172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BA2BA8BC1E001F3937 /* SideProfileView.swift */; };
+		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
 		7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */; };
 		8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC8D2B8CDD5900D1592E /* RestaurantsAppApp.swift */; };
@@ -25,6 +29,9 @@
 		8224ECAC2B8CDD5C00D1592E /* RestaurantsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAB2B8CDD5C00D1592E /* RestaurantsAppUITests.swift */; };
 		8224ECAE2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */; };
 		82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9DA582B96AD710068A8F5 /* Search_page.swift */; };
+		931FE12A2BAB484100C509DD /* orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE1292BAB484100C509DD /* orders.swift */; };
+		931FE12C2BAB487700C509DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 931FE12B2BAB487700C509DD /* FirebaseFirestore */; };
+		931FE12E2BAB4B4F00C509DD /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,9 @@
 		1706315E2BA4C52200C7FDB1 /* ordersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ordersView.swift; sourceTree = "<group>"; };
 		170631602BA4CB0700C7FDB1 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		170631622BA4DB0C00C7FDB1 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		1714680E2BA901BF00255D85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		172310BA2BA8BC1E001F3937 /* SideProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileView.swift; sourceTree = "<group>"; };
+		172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileHeaderView.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +77,8 @@
 		8224ECAB2B8CDD5C00D1592E /* RestaurantsAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITests.swift; sourceTree = "<group>"; };
 		8224ECAD2B8CDD5C00D1592E /* RestaurantsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
+		931FE1292BAB484100C509DD /* orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = orders.swift; sourceTree = "<group>"; };
+		931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */,
+				931FE12C2BAB487700C509DD /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +126,8 @@
 				1706315A2BA4C4EC00C7FDB1 /* homeView.swift */,
 				1706315C2BA4C50A00C7FDB1 /* restaurantsView.swift */,
 				1706315E2BA4C52200C7FDB1 /* ordersView.swift */,
+				172310BA2BA8BC1E001F3937 /* SideProfileView.swift */,
+				172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -146,14 +162,16 @@
 		8224EC8C2B8CDD5900D1592E /* RestaurantsApp */ = {
 			isa = PBXGroup;
 			children = (
+				931FE1282BAB481B00C509DD /* ModelView */,
+				1714680E2BA901BF00255D85 /* GoogleService-Info.plist */,
 				170631572BA4C24400C7FDB1 /* views */,
 				170631542BA4C1C000C7FDB1 /* components */,
 				82D9DA582B96AD710068A8F5 /* Search_page.swift */,
-				17C4732B2B926BE700FFFF5C /* Fonts */,
 				8224EC8D2B8CDD5900D1592E /* RestaurantsAppApp.swift */,
 				8224EC8F2B8CDD5900D1592E /* ContentView.swift */,
 				17C473272B92632700FFFF5C /* Launch Screen.storyboard */,
 				8224EC912B8CDD5900D1592E /* Item.swift */,
+				17C4732B2B926BE700FFFF5C /* Fonts */,
 				8224EC962B8CDD5C00D1592E /* Preview Content */,
 				8224EC932B8CDD5C00D1592E /* Assets.xcassets */,
 				8224EC952B8CDD5C00D1592E /* RestaurantsApp.entitlements */,
@@ -186,6 +204,15 @@
 			path = RestaurantsAppUITests;
 			sourceTree = "<group>";
 		};
+		931FE1282BAB481B00C509DD /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				931FE1292BAB484100C509DD /* orders.swift */,
+				931FE12D2BAB4B4F00C509DD /* FireStoreManager.swift */,
+			);
+			path = ModelView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,6 +229,10 @@
 			dependencies = (
 			);
 			name = RestaurantsApp;
+			packageProductDependencies = (
+				1714680C2BA8FBD200255D85 /* FirebaseAuth */,
+				931FE12B2BAB487700C509DD /* FirebaseFirestore */,
+			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -274,6 +305,9 @@
 				Base,
 			);
 			mainGroup = 8224EC812B8CDD5900D1592E;
+			packageReferences = (
+				1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 8224EC8B2B8CDD5900D1592E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -291,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */,
+				1714680F2BA901BF00255D85 /* GoogleService-Info.plist in Resources */,
 				8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */,
 				8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */,
 			);
@@ -319,16 +354,20 @@
 			files = (
 				1706315D2BA4C50A00C7FDB1 /* restaurantsView.swift in Sources */,
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
+				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
 				170631612BA4CB0700C7FDB1 /* TopBar.swift in Sources */,
 				8224EC922B8CDD5900D1592E /* Item.swift in Sources */,
 				7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */,
+				172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */,
 				170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */,
 				1706315F2BA4C52200C7FDB1 /* ordersView.swift in Sources */,
+				931FE12A2BAB484100C509DD /* orders.swift in Sources */,
 				170631592BA4C2DC00C7FDB1 /* promotionsView.swift in Sources */,
 				1706315B2BA4C4EC00C7FDB1 /* homeView.swift in Sources */,
 				8224EC8E2B8CDD5900D1592E /* RestaurantsAppApp.swift in Sources */,
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
+				931FE12E2BAB4B4F00C509DD /* FireStoreManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,11 +523,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RestaurantsApp/RestaurantsApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4D7Z4HN354;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -497,6 +537,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -521,11 +562,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RestaurantsApp/RestaurantsApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4D7Z4HN354;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -534,6 +576,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -679,6 +722,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1714680C2BA8FBD200255D85 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		931FE12B2BAB487700C509DD /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8224EC822B8CDD5900D1592E /* Project object */;
 }
