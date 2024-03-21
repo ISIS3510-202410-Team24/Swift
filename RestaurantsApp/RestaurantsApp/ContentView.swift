@@ -18,7 +18,7 @@ struct ContentView: View {
             VStack(alignment: .center) {
         
                     VStack {
-                        HeaderView(title: "RestaurantesApp", profileButtonAction: {
+                        HeaderView(title: "FoodU", profileButtonAction: {
                             showProfile.toggle()
                         })
 
