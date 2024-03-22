@@ -31,10 +31,12 @@ class LoginViewModel: ObservableObject{
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
                 print(error.localizedDescription)
+                AnalyticsManager.shared.logSignInFailureEvent(errorDescription: error.localizedDescription)
             } else {
                 print("Accedio usuario")
                 self.saveCredentialsLocally()
                 self.isLoggedIn = true
+                AnalyticsManager.shared.logSignInSuccessEvent()
             }
         }
     }

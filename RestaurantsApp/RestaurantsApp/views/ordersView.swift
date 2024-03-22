@@ -73,7 +73,8 @@ struct ordersView: View {
         }
         
         .onAppear {
-                        viewModel.fetchData ()
+            AnalyticsManager.shared.trackScreen("ordersView")
+            viewModel.fetchData ()
                     
         }
         .padding(.top, 24)
