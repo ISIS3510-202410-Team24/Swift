@@ -117,7 +117,7 @@ struct SignInView: View {
                         isPasswordVisible.toggle()
                     }) {
                         Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
-                            .foregroundColor(.gray)
+                            .foregroundColor(pinkColor)
                             .padding(.trailing, 10)
                     }
                 }
@@ -141,7 +141,7 @@ struct SignInView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
                 .frame(width: 327, height: 52, alignment: .center)
-                .background(Color(red: 0.56, green: 0.56, blue: 0.56))
+                .background(backroundColor)
                 .cornerRadius(8)
             }.edgesIgnoringSafeArea(.top)
             .onAppear(perform:LoginModel.authenticate)
@@ -256,7 +256,7 @@ struct SignUpView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .frame(width: 327, height: 52, alignment: .center)
-            .background(Color(red: 0.56, green: 0.56, blue: 0.56))
+            .background(backroundColor)
             .cornerRadius(8)
         }.padding(10)
         
