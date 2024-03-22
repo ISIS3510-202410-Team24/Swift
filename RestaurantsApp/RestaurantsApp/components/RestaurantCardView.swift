@@ -60,7 +60,7 @@ struct RestaurantCardView: View {
                         .overlay(
                           RoundedRectangle(cornerRadius: 32)
                             .inset(by: 1)
-                            .stroke(.black, lineWidth: 2)
+                            .stroke(.black, lineWidth: 0)
                         )
                     }
                 }
