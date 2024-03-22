@@ -129,7 +129,7 @@ struct CouponView: View {
                 HStack{
                     
                     // M3/body/small
-                    Text("Delicioso Ajiaco ")
+                    Text(coupon.descripcion)
                         .font(Font.custom("Roboto", size: 12))
                         .foregroundColor(Color(red: 0.28, green: 0.28, blue: 0.28))
                         .frame(width: 161, height: 12)
@@ -210,6 +210,7 @@ struct Coupon: Identifiable, Codable {
     var promocion: String
     var platoId: Int
     var restaurante: String
+    var descripcion: String
 }
 
 struct Bar: View {
