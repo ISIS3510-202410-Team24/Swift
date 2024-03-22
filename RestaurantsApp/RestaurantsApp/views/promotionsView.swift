@@ -3,7 +3,7 @@
 //  RestaurantsApp
 //
 //  Created by Villamil Pachon Leonidas on 15/03/24.
-//
+// Edited by Luis Felipe Dussán on 19/03/24
 
 import SwiftUI
 import FirebaseFirestore
