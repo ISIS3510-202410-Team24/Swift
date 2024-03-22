@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ordersView: View {
     @StateObject var viewModel = OrderViewModel()
+    @State private var isLoading = false // Variable de estado para controlar el indicador de carga
     
     var body: some View {
         
@@ -25,8 +26,10 @@ struct ordersView: View {
                     
                         LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
                             ForEach(viewModel.documents, id: \.self) { document in
-                                RestaurantCardView(document: document)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8)
+                                if document["activa"] as? Bool == true {
+                                    RestaurantCardView(document: document)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8)
+                                                    }
                                  //   .padding(.bottom ,)
                             }
                         }
@@ -49,11 +52,13 @@ struct ordersView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                     
-                    
+
                         LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
                             ForEach(viewModel.documents, id: \.self) { document in
-                                RestaurantCardView(document: document)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8)
+                                if document["activa"] as? Bool == false {
+                                    RestaurantCardView(document: document)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8)
+                                                    }
                                  //   .padding(.bottom ,)
                             }
                         }
@@ -68,7 +73,8 @@ struct ordersView: View {
         }
         
         .onAppear {
-            viewModel.fetchData()
+                        viewModel.fetchData ()
+                    
         }
         .padding(.top, 24)
         .padding(.bottom, 0)

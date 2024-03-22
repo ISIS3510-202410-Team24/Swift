@@ -18,9 +18,9 @@ struct promotionsView: View {
     var body: some View {
         VStack {
             
-            Bar(text: $searchText)
+            //Bar(text: $searchText)
             
-                .background(Color(pinkColor))
+            //    .background(Color(pinkColor))
             ScrollView {
                 VStack {
                   
@@ -110,7 +110,7 @@ struct CouponView: View {
                     //Botón morado
                     HStack(alignment: .center, spacing: 10) {
                         
-                        Text("View Menu")
+                        Text("Detail")
                             .font(Font.custom("Roboto", size: 10))
                             .foregroundColor(Color.black)
                             .multilineTextAlignment(.center) // Centra el texto horizontalmente
@@ -180,11 +180,11 @@ struct CouponView: View {
         .padding(.trailing, 40)
         .padding(.vertical, 10)
         .frame(width: 300, height: 183, alignment: .leading)
-        .cornerRadius(10)
+        .cornerRadius(32)
         .background(Color(red: 0.51, green: 0.77, blue: 0.75))
         .shadow(color: .black.opacity(0.16), radius: 2, x: 0, y: 4)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 32)
                 .stroke(Color(backroundColor), lineWidth: 2)
         )
     }
