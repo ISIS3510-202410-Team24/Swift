@@ -20,7 +20,7 @@ struct promotionsView: View {
             
             Bar(text: $searchText)
             
-                .background(Color(red: 0.4, green: 0.7, blue: 0.7))
+                .background(Color(pinkColor))
             ScrollView {
                 VStack {
                   
@@ -112,7 +112,7 @@ struct CouponView: View {
                         
                         Text("View Menu")
                             .font(Font.custom("Roboto", size: 10))
-                            .foregroundColor(Color(red: 0.28, green: 0.28, blue: 0.28))
+                            .foregroundColor(Color.black)
                             .multilineTextAlignment(.center) // Centra el texto horizontalmente
                             .frame(width: 70, height: 22) // Ajusta el tamaño del marco según sea necesario
                         
@@ -185,7 +185,7 @@ struct CouponView: View {
         .shadow(color: .black.opacity(0.16), radius: 2, x: 0, y: 4)
         .overlay(
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color(red: 0.41, green: 0.41, blue: 0.41), lineWidth: 2)
+                .stroke(Color(backroundColor), lineWidth: 2)
         )
     }
 }
@@ -218,6 +218,8 @@ struct Bar: View {
 
     var body: some View {
         HStack {
+            
+            /*
             Image(systemName: "arrow.left")
                 .foregroundColor(.blue)
                 .font(.title)
@@ -225,7 +227,7 @@ struct Bar: View {
                     // Add action when arrow is tapped
                     print("Arrow tapped!")
                 }
-
+             */
             Text("Offers")
                 .font(Font.custom("Roboto", size: 30))
                 .foregroundColor(.black)
