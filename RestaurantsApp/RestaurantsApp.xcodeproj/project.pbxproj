@@ -33,6 +33,7 @@
 		8224EC922B8CDD5900D1592E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC912B8CDD5900D1592E /* Item.swift */; };
 		8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC932B8CDD5C00D1592E /* Assets.xcassets */; };
 		8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */; };
+		829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */; };
 		82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D9DA582B96AD710068A8F5 /* Search_page.swift */; };
 		93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */; };
 		93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C854852BAB577000EF86F7 /* FireStoreManager.swift */; };
@@ -85,6 +86,7 @@
 		8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8224EC9D2B8CDD5C00D1592E /* RestaurantsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8224ECA72B8CDD5C00D1592E /* RestaurantsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		82D9DA582B96AD710068A8F5 /* Search_page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search_page.swift; sourceTree = "<group>"; };
 		93C854832BAB3EC400EF86F7 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		93C854852BAB577000EF86F7 /* FireStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireStoreManager.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				93C854852BAB577000EF86F7 /* FireStoreManager.swift */,
 				93CB5E852BAB74DB008739CF /* RestaurantViewModel.swift */,
 				93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */,
+				829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				1706315D2BA4C50A00C7FDB1 /* restaurantsView.swift in Sources */,
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
+				829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */,
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
 				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,

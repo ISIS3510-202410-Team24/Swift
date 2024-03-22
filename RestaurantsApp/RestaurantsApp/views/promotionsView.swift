@@ -11,8 +11,8 @@ import Firebase
 
 struct promotionsView: View {
     @State private var searchText: String = ""
-    let firestoreManager = FirestoreManager.shared
-    @State private var coupons: [Coupon] = []
+       let firestoreManager = FirestoreManager.shared
+       @ObservedObject var viewModel = PromotionViewModel()
     
 
     var body: some View {
@@ -24,14 +24,14 @@ struct promotionsView: View {
             ScrollView {
                 VStack {
                   
-                    ForEach(coupons, id: \.id) { coupon in
+                    ForEach(viewModel.coupons, id: \.id) { coupon in
                         CouponView(coupon: coupon)}
 
                 }
             }
         }
         .onAppear {
-            fetchCouponsFromFirestore()
+            viewModel.fetchCouponsFromFirestore()
         }
     }
 
@@ -74,8 +74,8 @@ struct promotionsView: View {
             }
 
             DispatchQueue.main.async {
-                self.coupons = fetchedCoupons
-                print("Cupones recuperados:", self.coupons)
+                viewModel.coupons = fetchedCoupons
+                print("Cupones recuperados:", viewModel.coupons)
             }
         }
     }
@@ -177,16 +177,13 @@ struct CouponView: View {
             
         }
         .padding(.leading, 16)
-        .padding(.trailing, 40)
+        .padding(.trailing, 16) // Reduce el relleno derecho para equilibrar el espacio
         .padding(.vertical, 10)
-        .frame(width: 300, height: 183, alignment: .leading)
-        .cornerRadius(32)
         .background(Color(red: 0.51, green: 0.77, blue: 0.75))
+        .cornerRadius(20) // Redondear las esquinas después de aplicar el fondo y antes del tamaño
+        .frame(width: 290 - 16 + 40, height: 183, alignment: .leading) // Ajusta el ancho del marco
         .shadow(color: .black.opacity(0.16), radius: 2, x: 0, y: 4)
-        .overlay(
-            RoundedRectangle(cornerRadius: 32)
-                .stroke(Color(backroundColor), lineWidth: 2)
-        )
+
     }
 }
 
