@@ -43,3 +43,13 @@ class PromotionViewModel: ObservableObject {
         }
     }
 }
+
+
+//ESTRUCTURA DEL CUPON
+struct Coupon: Identifiable, Codable {
+    @DocumentID var id: String?
+    var promocion: String
+    var platoId: Int
+    var restaurante: String
+    var descripcion: String
+}
