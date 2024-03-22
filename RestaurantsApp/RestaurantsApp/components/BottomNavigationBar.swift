@@ -21,6 +21,7 @@ struct BottomNavigationBar: View {
                 .tabItem {
                     Image(systemName: "percent")
                 }
+            
             restaurantsView()
                 .tabItem {
                     Image(systemName: "storefront")
@@ -30,6 +31,6 @@ struct BottomNavigationBar: View {
                     Image(systemName: "list.bullet.clipboard")
                 }
         }
-        .accentColor(.blue) // Color de resaltado para los elementos seleccionados
+        .accentColor(pinkColor) // Color de resaltado para los elementos seleccionados
     }
 }

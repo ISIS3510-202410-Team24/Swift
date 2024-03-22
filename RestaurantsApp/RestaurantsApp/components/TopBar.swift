@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 
+// Colors
+
 struct HeaderView: View {
     let title: String
     let profileButtonAction: () -> Void
@@ -37,7 +39,7 @@ struct HeaderView: View {
                 }
             }
             
-            .background(Color.blue)
+            .background(backroundColor)
             .foregroundColor(.white)
             
             Text(title)
