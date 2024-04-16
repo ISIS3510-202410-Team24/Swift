@@ -1,14 +1,13 @@
 //
-//  PromotionViewModel.swift
+//  BasketViewModel.swift
 //  RestaurantsApp
 //
-//  Created by Luis Felipe Dussán 2 on 22/03/24.
+//  Created by Luis Felipe Dussán 2 on 16/04/24.
 //
 
-import Foundation
 import FirebaseFirestore
 
-class PromotionViewModel: ObservableObject {
+class BasketViewModel: ObservableObject {
     @Published var coupons: [Coupon] = []
 
     func fetchCouponsFromFirestore() {
@@ -45,12 +44,5 @@ class PromotionViewModel: ObservableObject {
 }
 
 
-//ESTRUCTURA DEL CUPON
-struct Coupon: Identifiable, Codable {
-    @DocumentID var id: String?
-    var promocion: String
-    var platoId: Int
-    var restaurante: String
-    var descripcion: String
-    var enBasket: Bool
-}
+
+

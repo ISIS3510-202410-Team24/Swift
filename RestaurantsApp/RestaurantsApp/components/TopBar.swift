@@ -13,6 +13,7 @@ import SwiftUI
 struct HeaderView: View {
     let title: String
     let profileButtonAction: () -> Void
+    let basketButtonAction: () ->Void
 
     var body: some View {
         ZStack{
@@ -28,7 +29,7 @@ struct HeaderView: View {
                 
                 Spacer()
                 
-                Button(action: profileButtonAction) {
+                Button(action: basketButtonAction) {
                     Image(systemName: "cart")
                         .font(.title)
                 }
