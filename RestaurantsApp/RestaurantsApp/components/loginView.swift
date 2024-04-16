@@ -11,6 +11,7 @@ import Firebase
 struct login_page: View {
     
     @ObservedObject var LoginModel: LoginViewModel
+    
 
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct login_page: View {
                 
                 SignUpView(LoginModel : LoginModel)
                     .tabItem {
-                        Text("Sing up")
+                        Text("Sign Up")
                             .font(.largeTitle)
                     }
                     .tag(2)
@@ -44,6 +45,7 @@ struct SignInView: View {
 
     @State private var isPasswordVisible = false
     @State private var userIsLoggedIn = false
+    @State private var maxLength = 20
     var body: some View {
 
             
@@ -66,6 +68,12 @@ struct SignInView: View {
                         .padding(.leading, 10)
                     
                     TextField("Email", text: $LoginModel.email)
+                        .autocapitalization(.none)
+                        .onChange(of: LoginModel.email) { newValue in
+                                if newValue.count > maxLength {
+                                    LoginModel.email = String(newValue.prefix(maxLength))
+                                }
+                            }
                         .padding(15)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
@@ -86,11 +94,19 @@ struct SignInView: View {
                     
                     if isPasswordVisible {
                         TextField("Password", text: $LoginModel.password)
+                        
+                        
                             .padding(15)
                             .keyboardType(.default)
                             .disableAutocorrection(true)
                     } else {
                         SecureField("Password", text: $LoginModel.password)
+                            .onChange(of: LoginModel.password) { newValue in
+                                    if newValue.count > maxLength {
+                                        LoginModel.password = String(newValue.prefix(maxLength))
+                                    }
+                                }
+                            
                             .padding(15)
                             .keyboardType(.default)
                             .disableAutocorrection(true)
@@ -102,7 +118,7 @@ struct SignInView: View {
                         isPasswordVisible.toggle()
                     }) {
                         Image(systemName: isPasswordVisible ? "eye.slash" : "eye")
-                            .foregroundColor(.gray)
+                            .foregroundColor(pinkColor)
                             .padding(.trailing, 10)
                     }
                 }
@@ -126,8 +142,15 @@ struct SignInView: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
                 .frame(width: 327, height: 52, alignment: .center)
-                .background(Color(red: 0.56, green: 0.56, blue: 0.56))
+                .background(backroundColor)
                 .cornerRadius(8)
+                
+                
+                if LoginModel.isError {
+                                Text(LoginModel.errorMessage)
+                                    .foregroundColor(.red)
+                                    .padding()
+                            }
             }.edgesIgnoringSafeArea(.top)
             .onAppear(perform:LoginModel.authenticate)
         .padding(10)
@@ -144,6 +167,7 @@ struct SignUpView: View {
     @ObservedObject var LoginModel: LoginViewModel
     @State private var name = ""
     @State private var isPasswordVisible = false
+    @State private var maxLength = 20
     var body: some View {
         VStack(spacing: 20) {
             
@@ -164,6 +188,11 @@ struct SignUpView: View {
                     .padding(.leading, 10)
                 
                 TextField("Name", text: $name)
+                    .onChange(of: LoginModel.email) { newValue in
+                            if newValue.count > maxLength {
+                                LoginModel.email = String(newValue.prefix(maxLength))
+                            }
+                        }
                     .padding(15)
                     .keyboardType(.emailAddress)
             }
@@ -180,6 +209,12 @@ struct SignUpView: View {
                     .padding(.leading, 10)
                 
                 TextField("Email", text: $LoginModel.email)
+                    .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                    .onChange(of: LoginModel.email) { newValue in
+                        if newValue.count > maxLength {
+                            LoginModel.email = String(newValue.prefix(maxLength))
+                        }
+                    }
                     .padding(15)
                     .keyboardType(.emailAddress)
             }
@@ -198,11 +233,17 @@ struct SignUpView: View {
                 
                 if isPasswordVisible {
                     TextField("Password", text: $LoginModel.password)
+                        .onChange(of: LoginModel.password) { newValue in
+                            if newValue.count > maxLength {
+                                LoginModel.password = String(newValue.prefix(maxLength))
+                            }
+                        }
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
                 } else {
                     SecureField("Password", text: $LoginModel.password)
+                    
                         .padding(15)
                         .keyboardType(.default)
                         .disableAutocorrection(true)
@@ -223,8 +264,14 @@ struct SignUpView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 12)
             .frame(width: 327, height: 52, alignment: .center)
-            .background(Color(red: 0.56, green: 0.56, blue: 0.56))
+            .background(backroundColor)
             .cornerRadius(8)
+            if LoginModel.isError {
+                            Text(LoginModel.errorMessage)
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+            
         }.padding(10)
         
         
