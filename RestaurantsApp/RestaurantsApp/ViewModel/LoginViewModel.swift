@@ -7,6 +7,8 @@ class LoginViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     @Published var isLoggedIn = false
+    @Published var isError = false
+    @Published var errorMessage = ""
     
     @Published var alert = false
     @Published var alertMsg = ""
@@ -28,10 +30,18 @@ class LoginViewModel: ObservableObject{
     }
     
     func login() {
+        if email.isEmpty || password.isEmpty {
+                isError = true
+                errorMessage = "Please enter both email and password."
+                return
+            }
+            
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
                 print(error.localizedDescription)
                 AnalyticsManager.shared.logSignInFailureEvent(errorDescription: error.localizedDescription)
+                self.isError = true
+                self.errorMessage = "Incorrect email or password."
             } else {
                 print("Accedio usuario")
                 self.saveCredentialsLocally()
@@ -42,9 +52,30 @@ class LoginViewModel: ObservableObject{
     }
     
     func register(){
+        if email.isEmpty || password.isEmpty{
+                isError = true
+                errorMessage = "Please enter both email and password."
+                return
+            }
+        
+        guard isValidEmail(email) else {
+                    isError = true
+                    errorMessage = "Please enter a valid email address."
+                    return
+                }
+            
         Auth.auth().createUser(withEmail: email, password: password) { _, error in
-            if let error = error {
-                print(error.localizedDescription)
+            if let error = error as NSError? {
+                if error.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                    print(error.localizedDescription)
+                    self.isError=true
+                    self.errorMessage=("Email already in use please use other one")
+                    
+                    // Aquí puedes manejar el caso cuando el correo electrónico ya está en uso
+                } else {
+                    // Otro tipo de error
+                    print(error.localizedDescription)
+                }
             } else {
                 if let user = Auth.auth().currentUser {
                     let userID = user.uid
@@ -58,6 +89,8 @@ class LoginViewModel: ObservableObject{
                 self.isLoggedIn = true
             }
         }
+        
+        
     }
     
     func authenticate(){
@@ -89,4 +122,11 @@ class LoginViewModel: ObservableObject{
             print("El dispositivo no admite la autenticación biométrica")
         }
     }
+    
+    
+    private func isValidEmail(_ email: String) -> Bool {
+            let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+            let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+            return emailPredicate.evaluate(with: email)
+        }
 }

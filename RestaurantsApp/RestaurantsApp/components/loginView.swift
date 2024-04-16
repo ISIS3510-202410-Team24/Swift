@@ -11,6 +11,7 @@ import Firebase
 struct login_page: View {
     
     @ObservedObject var LoginModel: LoginViewModel
+    
 
     var body: some View {
         VStack {
@@ -26,7 +27,7 @@ struct login_page: View {
                 
                 SignUpView(LoginModel : LoginModel)
                     .tabItem {
-                        Text("Sing up")
+                        Text("Sign Up")
                             .font(.largeTitle)
                     }
                     .tag(2)
@@ -143,6 +144,13 @@ struct SignInView: View {
                 .frame(width: 327, height: 52, alignment: .center)
                 .background(backroundColor)
                 .cornerRadius(8)
+                
+                
+                if LoginModel.isError {
+                                Text(LoginModel.errorMessage)
+                                    .foregroundColor(.red)
+                                    .padding()
+                            }
             }.edgesIgnoringSafeArea(.top)
             .onAppear(perform:LoginModel.authenticate)
         .padding(10)
@@ -258,6 +266,12 @@ struct SignUpView: View {
             .frame(width: 327, height: 52, alignment: .center)
             .background(backroundColor)
             .cornerRadius(8)
+            if LoginModel.isError {
+                            Text(LoginModel.errorMessage)
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+            
         }.padding(10)
         
         
