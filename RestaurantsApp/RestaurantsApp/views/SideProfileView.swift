@@ -18,6 +18,7 @@ struct SideProfileView: View {
                     .onTapGesture {isShowing.toggle()}
                 
                 HStack{
+                    
                     Spacer()
                     VStack(alignment: .leading,spacing: 32){
                         SideProfileHeaderView()
