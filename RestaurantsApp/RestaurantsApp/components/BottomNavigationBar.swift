@@ -22,7 +22,7 @@ struct BottomNavigationBar: View {
                     Image(systemName: "percent")
                 }
             
-            restaurantsView()
+            MapView()
                 .tabItem {
                     Image(systemName: "storefront")
                 }
