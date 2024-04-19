@@ -20,6 +20,7 @@
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
 		1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */; };
+		17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17956E6B2BD1F45000F464FA /* MapViewModel.swift */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
 		7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */; };
 		7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */; };
@@ -75,6 +76,7 @@
 		1756E9EA2BCF436D00FDD2EA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantModel.swift; sourceTree = "<group>"; };
 		1756E9EF2BCF4FCF00FDD2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		17956E6B2BD1F45000F464FA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		7EA3AF682BACD04000D0C9E2 /* RestaurantsAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppTests.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				93CB5E852BAB74DB008739CF /* RestaurantViewModel.swift */,
 				93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */,
 				829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */,
+				17956E6B2BD1F45000F464FA /* MapViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 				1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */,
 				8224EC922B8CDD5900D1592E /* Item.swift in Sources */,
 				7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */,
+				17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */,
 				172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */,
 				93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */,
 				170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */,
@@ -591,7 +595,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 823GE4UB2Y;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -635,7 +639,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 823GE4UB2Y;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;

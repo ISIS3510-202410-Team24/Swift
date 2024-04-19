@@ -24,8 +24,9 @@ class RestaurantViewModel: ObservableObject {
                     if let name = data["nombre"] as? String,
                        let category = data["categoria"] as? String,
                        let address = data["direccion"] as? String,
-                       let location = data["ubicación"] as? GeoPoint {
+                       let location = data["ubicacion"] as? GeoPoint {
                         let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                        print(coordinates)
                         let restaurant = Restaurant(name: name, category: category, address: address, location: coordinates)
                         fetchedRestaurants.append(restaurant)
                     }
@@ -34,5 +35,6 @@ class RestaurantViewModel: ObservableObject {
             }
         }
     }
+
 }
 

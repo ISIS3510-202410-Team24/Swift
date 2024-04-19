@@ -14,20 +14,34 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @StateObject var viewModel = RestaurantViewModel()
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 4.601584309316319, longitude:-74.06600059206853),
-        span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02)
-    )
+    @StateObject var RestaurantviewModel = RestaurantViewModel()
+    @ObservedObject var mapViewModel = MapViewModel()
+    
+
     
     var body: some View {
-        Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: viewModel.restaurants) { restaurant in
-            MapMarker(coordinate: restaurant.location, tint: .blue)
+        Map(coordinateRegion: $mapViewModel.region,interactionModes: .all, showsUserLocation: true,userTrackingMode: nil,annotationItems: RestaurantviewModel.restaurants) { restaurant in
+            MapAnnotation(coordinate: restaurant.location){
+                VStack {
+                               Image(systemName: "mappin")
+                                   .foregroundColor(.blue)
+                                   .font(.title)
+                               Text(restaurant.name)
+                                   .foregroundColor(.black)
+                                   .font(.caption)
+                                   .padding(4)
+                                   .background(Color.white)
+                                   .cornerRadius(8)
+                           }
+            }
+            
         }
-        .onAppear {
-            viewModel.fetchRestaurants()
-        }
-        .navigationTitle("Mapa de Restaurantes")
+      
+      .onAppear {
+        RestaurantviewModel.fetchRestaurants()
+          mapViewModel.checkIfLocationServicesIsEnabled()
+      }
+      .navigationTitle("Mapa de Restaurantes")
     }
 }
 
