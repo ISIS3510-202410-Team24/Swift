@@ -53,4 +53,5 @@ struct Coupon: Identifiable, Codable {
     var restaurante: String
     var descripcion: String
     var enBasket: Bool
+    var code: String
 }

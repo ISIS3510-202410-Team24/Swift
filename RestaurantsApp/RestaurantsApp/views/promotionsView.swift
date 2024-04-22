@@ -44,6 +44,7 @@ struct promotionsView: View {
     //ESTRUCTURA DEL VIEW
     struct CouponView: View {
         let coupon: Coupon
+        @State private var showCouponMessage = false
         
         var body: some View {
             HStack(alignment: .center, spacing: 10) {
@@ -127,8 +128,12 @@ struct promotionsView: View {
                         .frame(width: 20, height: 20)
                         .offset(x: 40, y: -40) // Ajusta la posición para que esté en la esquina derecha
                         .onTapGesture {
-                            // Aquí se coloca la acción para que se realice cuando se toque la imagen "mas"
+                            self.showCouponMessage = true
                         }
+                        .sheet(isPresented: $showCouponMessage) {
+                                    // Vista emergente del mensaje del cupón
+                            CouponMessageView(couponCode: coupon.code, isPresented: $showCouponMessage)
+                                }
                 }
                 
                 
@@ -183,4 +188,49 @@ struct promotionsView: View {
         }
     }
     
+}
+
+
+struct CouponMessageView: View {
+    let couponCode: String
+    @Binding var isPresented: Bool // Estado que controla la visibilidad de CouponMessageView
+    
+    var body: some View {
+        VStack {
+            Text("Este es tu código para redimir el cupón: Disfrutalo !")
+                .font(.headline)
+                .foregroundColor(.black)
+                .padding()
+            
+            Text(couponCode)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding()
+            
+            Button(action: {
+                // Acción para cerrar la vista CouponMessageView
+                self.isPresented = false
+            }) {
+                Text("Explorar más cupones")
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Constants.Alerts)
+                    .cornerRadius(10)
+            }
+            .padding(.top, 20)
+            
+            
+            Text("Este cupon ha sido redimido por esta cantidad de personas: ")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+                .padding()
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color(red: 0.51, green: 0.77, blue: 0.75))
+        .cornerRadius(10)
+        .padding(20)
+    }
 }
