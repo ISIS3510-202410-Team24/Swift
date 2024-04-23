@@ -3,15 +3,13 @@ import SwiftUI
 struct ordersView: View {
     @StateObject var viewModel = OrderViewModel()
     @State private var isLoading = false // Variable de estado para controlar el indicador de carga
+    @State private var activeOrdersCount = 0 // Contador para los pedidos activos
+    @State private var inactiveOrdersCount = 0 // Contador para los pedidos inactivos
+    @State private var renderizo = 0
     
     var body: some View {
-        
-       // VStack(){
-  //      }
         ScrollView {
-            
             VStack(alignment: .leading, spacing: 10) {
-                
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Current orders")
                         .font(Font.custom("Roboto", size: 22))
@@ -23,24 +21,28 @@ struct ordersView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                     
+                    // Contador para los pedidos activos
+                    Text("Active Orders: \(activeOrdersCount)")
+                        .foregroundColor(.black)
+                        .padding(.bottom, 8)
                     
-                        LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
-                            ForEach(viewModel.documents, id: \.self) { document in
-                                if document["activa"] as? Bool == true {
-                                    RestaurantCardView(document: document)
-                                        .frame(width: UIScreen.main.bounds.width * 0.8)
-                                                    }
-                                 //   .padding(.bottom ,)
+                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
+                        ForEach(viewModel.documents, id: \.self) { document in
+                            if document["activa"] as? Bool == true {
+                                RestaurantCardView(document: document)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8)
+                                    .onAppear {
+                                        activeOrdersCount += 1
+                                    }
                             }
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 0)
-                    
-
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 0)
                 }
                 .padding(.horizontal, 12)
                 .padding(.bottom, 80)
-                           
+                
                 VStack(alignment: .leading, spacing: 10) {
                     Text("History of orders")
                         .font(Font.custom("Roboto", size: 22))
@@ -52,30 +54,33 @@ struct ordersView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                     
-
-                        LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
-                            ForEach(viewModel.documents, id: \.self) { document in
-                                if document["activa"] as? Bool == false {
-                                    RestaurantCardView(document: document)
-                                        .frame(width: UIScreen.main.bounds.width * 0.8)
-                                                    }
-                                 //   .padding(.bottom ,)
+                    // Contador para los pedidos inactivos
+                    Text("Inactive Orders: \(inactiveOrdersCount)")
+                        .foregroundColor(.black)
+                        .padding(.bottom, 8)
+                    
+                    
+                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
+                        ForEach(viewModel.documents, id: \.self) { document in
+                            if document["activa"] as? Bool == false {
+                                RestaurantCardView(document: document)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8)
+                                    .onAppear {
+                                        inactiveOrdersCount += 1
+                                    }
                             }
                         }
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 0)
-                    
-
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 0)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 0)
             }
         }
-        
         .onAppear {
             AnalyticsManager.shared.trackScreen("ordersView")
-            viewModel.fetchData ()
-                    
+            viewModel.fetchData()
         }
         .padding(.top, 24)
         .padding(.bottom, 0)
@@ -84,7 +89,8 @@ struct ordersView: View {
     }
 }
 
+
+
 #Preview {
     ordersView()
 }
-

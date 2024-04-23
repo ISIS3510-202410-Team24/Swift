@@ -13,7 +13,7 @@ struct promotionsView: View {
     @State private var searchText: String = ""
     let firestoreManager = FirestoreManager.shared
     @ObservedObject var viewModel = PromotionViewModel()
-    
+    @State private var isShowingConnectivityAlert = false
     
     var body: some View {
         VStack {
@@ -25,16 +25,29 @@ struct promotionsView: View {
                 VStack {
                     
                     ForEach($viewModel.coupons, id: \.id) { $coupon in
-                        CouponView(coupon: coupon)
+                                           CouponView(coupon: coupon, viewModel: viewModel)
                     }
                     
                 }
             }
         }
         .onAppear {
-            viewModel.fetchCouponsFromFirestore()
-        }
-    }
+                 // Verificar la conectividad antes de cargar los cupones
+                 if Reachability.isConnectedToNetwork() {
+                     viewModel.fetchCouponsFromFirestore()
+                 } else {
+                     // Mostrar el mensaje de falta de conectividad
+                     self.isShowingConnectivityAlert = true
+                 }
+             }
+             .alert(isPresented: $isShowingConnectivityAlert) {
+                 Alert(
+                     title: Text("No hay conexión a Internet"),
+                     message: Text("Por favor, comprueba tu conexión e intenta nuevamente."),
+                     dismissButton: .default(Text("OK"))
+                 )
+             }
+         }
     
     
     
@@ -44,6 +57,7 @@ struct promotionsView: View {
     //ESTRUCTURA DEL VIEW
     struct CouponView: View {
         let coupon: Coupon
+        let viewModel: PromotionViewModel
         @State private var showCouponMessage = false
         
         var body: some View {
@@ -129,10 +143,11 @@ struct promotionsView: View {
                         .offset(x: 40, y: -40) // Ajusta la posición para que esté en la esquina derecha
                         .onTapGesture {
                             self.showCouponMessage = true
+                            self.viewModel.incrementarRedencionesParaCupon(cuponID: coupon.id!)
                         }
                         .sheet(isPresented: $showCouponMessage) {
                                     // Vista emergente del mensaje del cupón
-                            CouponMessageView(couponCode: coupon.code, isPresented: $showCouponMessage)
+                            CouponMessageView(couponCode: coupon.code,couponRedenciones: coupon.redenciones, isPresented: $showCouponMessage)
                                 }
                 }
                 
@@ -193,14 +208,18 @@ struct promotionsView: View {
 
 struct CouponMessageView: View {
     let couponCode: String
+    let couponRedenciones: Int
     @Binding var isPresented: Bool // Estado que controla la visibilidad de CouponMessageView
     
     var body: some View {
         VStack {
             Text("Este es tu código para redimir el cupón: Disfrutalo !")
-                .font(.headline)
+                .font(.title)
+                .fontWeight(.bold)
                 .foregroundColor(.black)
                 .padding()
+            
+                
             
             Text(couponCode)
                 .font(.title)
@@ -221,11 +240,11 @@ struct CouponMessageView: View {
             .padding(.top, 20)
             
             
-            Text("Este cupon ha sido redimido por esta cantidad de personas: ")
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
-                .padding()
+            Text("Este cupón ha sido redimido por \(couponRedenciones) personas") // Muestra el número de redenciones
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .padding()
+            
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
