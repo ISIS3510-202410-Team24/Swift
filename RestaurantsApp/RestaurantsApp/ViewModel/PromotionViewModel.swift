@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseFirestore
 
+
 class PromotionViewModel: ObservableObject {
     @Published var coupons: [Coupon] = []
 
@@ -42,7 +43,23 @@ class PromotionViewModel: ObservableObject {
             }
         }
     }
+    
+    // Método para incrementar el contador de redenciones para un cupón específico
+    func incrementarRedencionesParaCupon(cuponID: String) {
+        let db = Firestore.firestore()
+        let cuponesRef = db.collection("cupones").document(cuponID)
+
+        // Atomically increment the redemptions field by 1
+        cuponesRef.updateData(["redenciones": FieldValue.increment(Int64(1))]) { error in
+            if let error = error {
+                print("Error incrementando redenciones: \(error)")
+            } else {
+                print("Redención exitosa")
+            }
+        }
+    }
 }
+
 
 
 //ESTRUCTURA DEL CUPON
@@ -54,4 +71,7 @@ struct Coupon: Identifiable, Codable {
     var descripcion: String
     var enBasket: Bool
     var code: String
+    var redenciones: Int
 }
+
+
