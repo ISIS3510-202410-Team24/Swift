@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var showProfile = false
+    @State private var showBasket = false
     @StateObject var loginModel = LoginViewModel()
     var body: some View {
         
@@ -18,9 +19,13 @@ struct ContentView: View {
             VStack(alignment: .center) {
         
                     VStack {
-                        HeaderView(title: "Home", profileButtonAction: {
+                        HeaderView(title: "FoodU", profileButtonAction: {
                             showProfile.toggle()
-                        })
+                        }, basketButtonAction: {
+                            showBasket.toggle()
+                        }
+                       
+                        )
 
                     
                 }
@@ -28,6 +33,9 @@ struct ContentView: View {
                 BottomNavigationBar()
             }
             SideProfileView(isShowing: $showProfile)
+            basketView(isShowing: $showBasket)
+            
+            
         }
     }
 }
