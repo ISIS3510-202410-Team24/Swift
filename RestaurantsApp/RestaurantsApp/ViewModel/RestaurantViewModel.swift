@@ -13,6 +13,11 @@ class RestaurantViewModel: ObservableObject {
     
     private var db = Firestore.firestore()
     
+    init() {
+        fetchRestaurants()
+      }
+    
+    
     func fetchRestaurants() {
         db.collection("restaurantes").getDocuments { (querySnapshot, error) in
             if let error = error {

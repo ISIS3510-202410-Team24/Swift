@@ -14,16 +14,15 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @StateObject var RestaurantviewModel = RestaurantViewModel()
+    @StateObject var restaurantViewModel = RestaurantViewModel()
     @ObservedObject var mapViewModel = MapViewModel()
-    
+    @State private var isDataLoaded = false
 
-    
     var body: some View {
-        Map(coordinateRegion: $mapViewModel.region,interactionModes: .all, showsUserLocation: true,userTrackingMode: nil,annotationItems: RestaurantviewModel.restaurants) { restaurant in
+        Map(coordinateRegion: $mapViewModel.region,interactionModes: .all, showsUserLocation: true,userTrackingMode: nil,annotationItems: mapViewModel.nearbyRestaurants) { restaurant in
             MapAnnotation(coordinate: restaurant.location){
                 VStack {
-                               Image(systemName: "mappin")
+                               Image(systemName: "fork.knife.circle.fill")
                                    .foregroundColor(.blue)
                                    .font(.title)
                                Text(restaurant.name)
@@ -36,14 +35,20 @@ struct MapView: View {
             }
             
         }
-      
-      .onAppear {
-        RestaurantviewModel.fetchRestaurants()
-          mapViewModel.checkIfLocationServicesIsEnabled()
-      }
-      .navigationTitle("Mapa de Restaurantes")
+        .onAppear {
+          mapViewModel.filterRestaurants() // Initial filter (optional)
+        }
+        .onReceive(restaurantViewModel.$restaurants) { restaurants in
+          if !restaurants.isEmpty {
+              mapViewModel.checkIfLocationServicesIsEnabled()
+              mapViewModel.restaurantViewModel=restaurantViewModel
+              mapViewModel.filterRestaurants() // Filter after data is fetched
+          }
+        }
     }
 }
+
+
 
 
 
