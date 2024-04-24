@@ -1,12 +1,6 @@
-//
-//  RestaurantViewModel.swift
-//  RestaurantsApp
-//
-//  Created by Estudiantes on 20/03/24.
-//
-
 import FirebaseFirestore
 import CoreLocation
+import SwiftUI
 
 class RestaurantViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
@@ -15,8 +9,7 @@ class RestaurantViewModel: ObservableObject {
     
     init() {
         fetchRestaurants()
-      }
-    
+    }
     
     func fetchRestaurants() {
         db.collection("restaurantes").getDocuments { (querySnapshot, error) in
@@ -29,10 +22,12 @@ class RestaurantViewModel: ObservableObject {
                     if let name = data["nombre"] as? String,
                        let category = data["categoria"] as? String,
                        let address = data["direccion"] as? String,
+                       let score = data["calificacion"] as? Float,
                        let location = data["ubicacion"] as? GeoPoint {
                         let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                        print(coordinates)
-                        let restaurant = Restaurant(name: name, category: category, address: address, location: coordinates)
+                        
+                        
+                        let restaurant = Restaurant(name: name, category: category, address: address, location: coordinates, score: score)
                         fetchedRestaurants.append(restaurant)
                     }
                 }
@@ -40,6 +35,4 @@ class RestaurantViewModel: ObservableObject {
             }
         }
     }
-
 }
-

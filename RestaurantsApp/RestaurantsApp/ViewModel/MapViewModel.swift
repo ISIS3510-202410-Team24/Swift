@@ -59,6 +59,7 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     
     func filterRestaurants(){
+        
         guard let viewModel = restaurantViewModel else {
                 print("RestaurantViewModel is nil")
                 return
@@ -70,6 +71,8 @@ class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
                 return
             }
                             // Filtrar los restaurantes cercanos basados en la ubicación del usuario
+        
+        print(viewModel.restaurants.count)
                             nearbyRestaurants = viewModel.restaurants.filter { restaurant in
                                 let restaurantLocation = CLLocation(latitude: restaurant.location.latitude, longitude: restaurant.location.longitude)
                                 let distance = userLocation.distance(from: restaurantLocation)
