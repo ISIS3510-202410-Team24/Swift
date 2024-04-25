@@ -24,7 +24,7 @@ struct ordersView: View {
                         .foregroundColor(.black)
                         .padding(.bottom, 8)
                     
-                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
+                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.15) {
                         ForEach(viewModel.documents, id: \.self) { document in
                             if let activa = document["activa"] as? Bool, activa {
                                 RestaurantCardView(document: document) {
@@ -43,10 +43,10 @@ struct ordersView: View {
                         }
                     }
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 50)
+                    .padding(.vertical, 0)
                 }
                 .padding(.horizontal, 12)
-                .padding(.bottom, 80)
+                .padding(.bottom, 100)
                 
                 VStack(alignment: .leading, spacing: 10) {
                     Text("History of orders")
@@ -88,7 +88,7 @@ struct ordersView: View {
                         }
                     }
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 50)
+                    .padding(.vertical, 0)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 0)

@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseFirestore
+import Kingfisher
 
 // Colors
 let backroundColor = Color(UIColor(named: "Background")!)
@@ -45,28 +46,21 @@ struct RestaurantCardView: View {
                 Spacer()
                 if let imageURLString = document["producto"] as? String,
                    let imageURL = URL(string: imageURLString) {
-                    AsyncImage(url: imageURL) { phase in
-                        switch phase {
-                        case .empty:
-                            // Placeholder or loading view
+                    KFImage(imageURL)
+                        .placeholder {
+                            // Placeholder view while loading
                             ProgressView()
-                        case .success(let image):
-                            // Image loaded successfully
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                                .frame(width: 100, height: 84)
-                                .clipped()
-                        case .failure(let error):
-                            // Placeholder or error view
-                            Text("Failed to load image: \(error.localizedDescription)")
-                        @unknown default:
-                            // Placeholder or error view
-                            Text("Failed to load image")
                         }
-                    }
+                        .onFailure { error in
+                            // Placeholder view on failure
+                            Text("Failed to load image: \(error.localizedDescription)")
+                        }
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 84)
+                        .clipped()
                 } else {
-                    // Placeholder or error view for image not found
+                    // Placeholder view for image not found
                     Text("Image Not Found")
                 }
             }
