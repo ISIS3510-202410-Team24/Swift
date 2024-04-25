@@ -2,10 +2,9 @@ import SwiftUI
 
 struct ordersView: View {
     @StateObject var viewModel = OrderViewModel()
-    @State private var isLoading = false // Variable de estado para controlar el indicador de carga
-    @State private var activeOrdersCount = 0 // Contador para los pedidos activos
-    @State private var inactiveOrdersCount = 0 // Contador para los pedidos inactivos
-    @State private var renderizo = 0
+    @State private var isLoading = false
+    @State private var activeOrdersCount = 0
+    @State private var inactiveOrdersCount = 0
     
     var body: some View {
         ScrollView {
@@ -21,24 +20,30 @@ struct ordersView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                     
-                    // Contador para los pedidos activos
                     Text("Active Orders: \(activeOrdersCount)")
                         .foregroundColor(.black)
                         .padding(.bottom, 8)
                     
                     LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
                         ForEach(viewModel.documents, id: \.self) { document in
-                            if document["activa"] as? Bool == true {
-                                RestaurantCardView(document: document)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8)
-                                    .onAppear {
-                                        activeOrdersCount += 1
-                                    }
+                            if let activa = document["activa"] as? Bool, activa {
+                                RestaurantCardView(document: document) {
+                                    // Closure para eliminar la orden
+                                    viewModel.deleteOrder(document)
+                                    
+                                }
+                                .frame(width: UIScreen.main.bounds.width * 0.8)
+                                .onAppear {
+                                    activeOrdersCount += 1
+                                }
                             }
+                        }
+                        if isLoading {
+                            ProgressView()
                         }
                     }
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 0)
+                    .padding(.vertical, 50)
                 }
                 .padding(.horizontal, 12)
                 .padding(.bottom, 80)
@@ -54,25 +59,36 @@ struct ordersView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(.black)
                     
-                    // Contador para los pedidos inactivos
                     Text("Inactive Orders: \(inactiveOrdersCount)")
                         .foregroundColor(.black)
                         .padding(.bottom, 8)
                     
-                    
-                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.1) {
+                    LazyVStack(alignment: .center, spacing: UIScreen.main.bounds.height * 0.15) {
                         ForEach(viewModel.documents, id: \.self) { document in
-                            if document["activa"] as? Bool == false {
-                                RestaurantCardView(document: document)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8)
-                                    .onAppear {
-                                        inactiveOrdersCount += 1
-                                    }
+                            if let activa = document["activa"] as? Bool, !activa {
+                                RestaurantCardView(document: document) {
+                                    // Closure para eliminar la orden
+                                    viewModel.deleteOrder(document)
+                                        if let activa = document["activa"] as? Bool {
+                                            if activa {
+                                                activeOrdersCount -= 1
+                                            } else {
+                                                inactiveOrdersCount -= 1
+                                            }
+                                        }
+                                }
+                                .frame(width: UIScreen.main.bounds.width * 0.8)
+                                .onAppear {
+                                    inactiveOrdersCount += 1
+                                }
                             }
+                        }
+                        if isLoading {
+                            ProgressView()
                         }
                     }
                     .padding(.horizontal, 16)
-                    .padding(.vertical, 0)
+                    .padding(.vertical, 50)
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 0)
@@ -80,7 +96,9 @@ struct ordersView: View {
         }
         .onAppear {
             AnalyticsManager.shared.trackScreen("ordersView")
+            isLoading = true
             viewModel.fetchData()
+            isLoading = false
         }
         .padding(.top, 24)
         .padding(.bottom, 0)
@@ -89,8 +107,8 @@ struct ordersView: View {
     }
 }
 
-
-
-#Preview {
-    ordersView()
+struct ordersView_Previews: PreviewProvider {
+    static var previews: some View {
+        ordersView()
+    }
 }
