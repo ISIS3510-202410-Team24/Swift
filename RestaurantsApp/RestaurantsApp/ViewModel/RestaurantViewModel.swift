@@ -1,27 +1,37 @@
-//
-//  RestaurantViewModel.swift
-//  RestaurantsApp
-//
-//  Created by Estudiantes on 20/03/24.
-//
-
-import Foundation
-import SwiftUI
 import FirebaseFirestore
+import CoreLocation
+import SwiftUI
 
-// ViewModel para manejar la lógica de obtención de datos
 class RestaurantViewModel: ObservableObject {
-    @Published var document: DocumentSnapshot?
+    @Published var restaurants: [Restaurant] = []
     
-    func fetchData() {
-        // Aquí debes implementar la lógica para obtener el documento de Firestore
-        // Esto es solo un ejemplo básico
-        let db = Firestore.firestore()
-        db.collection("restaurantes").document("uk48OqZ7JBeMeBUmowlU").getDocument { document, error in
-            if let document = document, document.exists {
-                self.document = document
+    private var db = Firestore.firestore()
+    
+    init() {
+        fetchRestaurants()
+    }
+    
+    func fetchRestaurants() {
+        db.collection("restaurantes").getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
             } else {
-                print("Document does not exist")
+                var fetchedRestaurants: [Restaurant] = []
+                for document in querySnapshot!.documents {
+                    let data = document.data()
+                    if let name = data["nombre"] as? String,
+                       let category = data["categoria"] as? String,
+                       let address = data["direccion"] as? String,
+                       let score = data["calificacion"] as? Float,
+                       let location = data["ubicacion"] as? GeoPoint {
+                        let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+                        
+                        
+                        let restaurant = Restaurant(name: name, category: category, address: address, location: coordinates, score: score)
+                        fetchedRestaurants.append(restaurant)
+                    }
+                }
+                self.restaurants = fetchedRestaurants
             }
         }
     }
