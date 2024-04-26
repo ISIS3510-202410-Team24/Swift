@@ -7,7 +7,7 @@ import FirebaseAuth
 class OrderViewModel: ObservableObject {
     @Published var documents: [DocumentSnapshot] = []
     
-    func fetchData() {
+    func fetchData(completion: @escaping () -> Void) {
         let db = Firestore.firestore()
         
         // Obtener el ID del usuario actual
@@ -33,11 +33,13 @@ class OrderViewModel: ObservableObject {
                         // Actualizo los documentos en el hilo principal
                         DispatchQueue.main.async {
                             self.documents = documents
+                            completion() // Llamo al cierre de finalización
                         }
                     }
                 }
         }
     }
+
 
     
     func deleteOrder(_ document: DocumentSnapshot) {
@@ -48,7 +50,6 @@ class OrderViewModel: ObservableObject {
                 print("Error deleting document: \(error)")
             } else {
                 // Eliminación exitosa
-                // Aquí podrías realizar alguna actualización adicional si es necesario
                 print("Document successfully deleted")
                 
                 // Remueve el documento eliminado de la lista local
