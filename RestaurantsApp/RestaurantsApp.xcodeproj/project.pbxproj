@@ -18,6 +18,8 @@
 		1714680F2BA901BF00255D85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1714680E2BA901BF00255D85 /* GoogleService-Info.plist */; };
 		172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BA2BA8BC1E001F3937 /* SideProfileView.swift */; };
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
+		174D24F42BDB0EE600F748D4 /* cacheRestaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D24F32BDB0EE600F748D4 /* cacheRestaurantModel.swift */; };
+		174D24F62BDB24A600F748D4 /* NetWorkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174D24F52BDB24A600F748D4 /* NetWorkMonitor.swift */; };
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
 		1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */; };
 		17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17956E6B2BD1F45000F464FA /* MapViewModel.swift */; };
@@ -73,6 +75,8 @@
 		1714680E2BA901BF00255D85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		172310BA2BA8BC1E001F3937 /* SideProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileView.swift; sourceTree = "<group>"; };
 		172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileHeaderView.swift; sourceTree = "<group>"; };
+		174D24F32BDB0EE600F748D4 /* cacheRestaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cacheRestaurantModel.swift; sourceTree = "<group>"; };
+		174D24F52BDB24A600F748D4 /* NetWorkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkMonitor.swift; sourceTree = "<group>"; };
 		1756E9EA2BCF436D00FDD2EA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantModel.swift; sourceTree = "<group>"; };
 		1756E9EF2BCF4FCF00FDD2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -139,6 +143,7 @@
 				170631602BA4CB0700C7FDB1 /* TopBar.swift */,
 				170631622BA4DB0C00C7FDB1 /* loginView.swift */,
 				7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */,
+				174D24F52BDB24A600F748D4 /* NetWorkMonitor.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */,
+				174D24F32BDB0EE600F748D4 /* cacheRestaurantModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -417,12 +423,14 @@
 				829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */,
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
 				1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */,
+				174D24F62BDB24A600F748D4 /* NetWorkMonitor.swift in Sources */,
 				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
 				170631612BA4CB0700C7FDB1 /* TopBar.swift in Sources */,
 				1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */,
 				8224EC922B8CDD5900D1592E /* Item.swift in Sources */,
 				7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */,
+				174D24F42BDB0EE600F748D4 /* cacheRestaurantModel.swift in Sources */,
 				17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */,
 				172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */,
 				93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */,

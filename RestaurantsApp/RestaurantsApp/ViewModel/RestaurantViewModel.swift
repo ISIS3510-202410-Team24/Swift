@@ -1,5 +1,4 @@
 import FirebaseFirestore
-import CoreLocation
 import SwiftUI
 
 class RestaurantViewModel: ObservableObject {
@@ -12,7 +11,8 @@ class RestaurantViewModel: ObservableObject {
     }
     
     func fetchRestaurants() {
-        db.collection("restaurantes").getDocuments { (querySnapshot, error) in
+        db.collection("restaurantes").getDocuments { [weak self] (querySnapshot, error) in
+            guard let self = self else { return }
             if let error = error {
                 print("Error getting documents: \(error)")
             } else {
@@ -24,10 +24,8 @@ class RestaurantViewModel: ObservableObject {
                        let address = data["direccion"] as? String,
                        let score = data["calificacion"] as? Float,
                        let location = data["ubicacion"] as? GeoPoint {
-                        let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-                        
-                        
-                        let restaurant = Restaurant(name: name, category: category, address: address, location: coordinates, score: score)
+                        let coordinate = Coordinate(latitude: location.latitude, longitude: location.longitude)
+                        let restaurant = Restaurant(name: name, category: category, address: address, location: coordinate, score: score)
                         fetchedRestaurants.append(restaurant)
                     }
                 }
