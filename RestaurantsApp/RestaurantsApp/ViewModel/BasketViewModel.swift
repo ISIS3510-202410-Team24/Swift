@@ -1,15 +1,13 @@
 //
-//  PromotionViewModel.swift
+//  BasketViewModel.swift
 //  RestaurantsApp
 //
-//  Created by Luis Felipe Dussán 2 on 22/03/24.
+//  Created by Luis Felipe Dussán 2 on 16/04/24.
 //
 
-import Foundation
 import FirebaseFirestore
 
-
-class PromotionViewModel: ObservableObject {
+class BasketViewModel: ObservableObject {
     @Published var coupons: [Coupon] = []
 
     func fetchCouponsFromFirestore() {
@@ -43,35 +41,8 @@ class PromotionViewModel: ObservableObject {
             }
         }
     }
-    
-    // Método para incrementar el contador de redenciones para un cupón específico
-    func incrementarRedencionesParaCupon(cuponID: String) {
-        let db = Firestore.firestore()
-        let cuponesRef = db.collection("cupones").document(cuponID)
-
-        // Atomically increment the redemptions field by 1
-        cuponesRef.updateData(["redenciones": FieldValue.increment(Int64(1))]) { error in
-            if let error = error {
-                print("Error incrementando redenciones: \(error)")
-            } else {
-                print("Redención exitosa")
-            }
-        }
-    }
 }
 
 
-
-//ESTRUCTURA DEL CUPON
-struct Coupon: Identifiable, Codable {
-    @DocumentID var id: String?
-    var promocion: String
-    var platoId: Int
-    var restaurante: String
-    var descripcion: String
-    var enBasket: Bool
-    var code: String
-    var redenciones: Int
-}
 
 
