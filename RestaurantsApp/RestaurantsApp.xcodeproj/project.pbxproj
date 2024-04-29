@@ -162,9 +162,7 @@
 				1706315E2BA4C52200C7FDB1 /* ordersView.swift */,
 				172310BA2BA8BC1E001F3937 /* SideProfileView.swift */,
 				172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */,
-
 				1756E9EA2BCF436D00FDD2EA /* MapView.swift */,
-
 				82EDFF2C2BCF273300729696 /* basketView.swift */,
 			);
 			path = views;
@@ -279,11 +277,9 @@
 				93CB5E872BAB7EC6008739CF /* OrderViewModel.swift */,
 				829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */,
 				17956E6B2BD1F45000F464FA /* MapViewModel.swift */,
-
 				82EDFF2E2BCF3D2B00729696 /* BasketViewModel.swift */,
 				82CA03852BD8796800652803 /* EventualConnectivity.swift */,
 				82CA03872BD87C6B00652803 /* ProfileViewModel.swift */,
-
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -436,11 +432,8 @@
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
 				829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */,
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
-
 				1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */,
-
 				82EDFF2F2BCF3D2B00729696 /* BasketViewModel.swift in Sources */,
-
 				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
