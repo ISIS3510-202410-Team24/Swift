@@ -32,7 +32,7 @@ struct ContentView: View {
                 
                 BottomNavigationBar()
             }
-            SideProfileView(isShowing: $showProfile)
+            SideProfileView(isShowing: $showProfile,profileImage:Image(systemName: "person.circle"))
             basketView(isShowing: $showBasket)
             
             
