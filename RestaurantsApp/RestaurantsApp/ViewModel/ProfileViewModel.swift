@@ -7,34 +7,52 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 // Función para obtener la imagen del usuario
-/*
-func fetchUserProfile(userId: String) {
-    let db = Firestore.firestore()
-    let userRef = db.collection("usuarios").document(userId)
+
+class ProfileViewModel:ObservableObject {
+    @Published var documents: [DocumentSnapshot] = []
+    @Published var profileName: String = ""
     
-    userRef.getDocument { document, error in
-        if let error = error {
-            errorMessage = "Error al obtener el perfil del usuario: \(error.localizedDescription)"
+    func getNameUser(completion: @escaping (String?) -> Void) {
+        let db = Firestore.firestore()
+        
+        // Obtener el ID del usuario actual
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            // No se pudo obtener el ID del usuario actual, no se puede proceder con la obtención de datos
+            completion(nil)
             return
         }
-        
-        guard let document = document, document.exists else {
-            errorMessage = "El usuario no existe"
-            return
-        }
-        
-        do {
-            let userProfile = try document.data(as: UserProfile.self)
-            guard let userProfile = userProfile else {
-                errorMessage = "No se pudo decodificar el perfil del usuario"
-                return
+      
+        // Realiza la consulta en la colección "usuario" filtrando por el campo "userId"
+        db.collection("usuario")
+            .document(currentUserID) // Utiliza directamente el ID del usuario como ID del documento
+            .getDocument { (document, error) in
+                if let error = error {
+                    print("Error getting document: \(error)")
+                    completion(nil)
+                } else {
+                    // Verifica si se encontró el documento y si contiene el campo "nombre"
+                    if let document = document, document.exists {
+                        if let profileName = document.data()?["name"] as? String {
+                            // Llama al bloque de finalización con el nombre del usuario
+                            completion(profileName)
+                        } else {
+                            // Si no se encuentra el campo "nombre", llama al bloque de finalización con nil
+                            print("No se encontró el campo 'nombre' en el documento.")
+                            completion(nil)
+                        }
+                    } else {
+                        // Si no se encuentra el documento, llama al bloque de finalización con nil
+                        print("No se encontró un documento con el ID de usuario proporcionado.")
+                        completion(nil)
+                    }
+                }
             }
-            self.userProfile = userProfile
-        } catch {
-            errorMessage = "Error al decodificar el perfil del usuario: \(error.localizedDescription)"
-        }
     }
-}
-*/
+
+    
+    
+    
+    }

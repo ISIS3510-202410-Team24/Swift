@@ -21,7 +21,7 @@ class LoginViewModel: ObservableObject{
     }
     
     // Función para recuperar credenciales almacenadas localmente
-    private func getSavedCredentials() -> (email: String, password: String)? {
+    func getSavedCredentials() -> (email: String, password: String)? {
         guard let savedEmail = UserDefaults.standard.string(forKey: "savedEmail"),
               let savedPassword = UserDefaults.standard.string(forKey: "savedPassword") else {
             return nil
@@ -50,6 +50,8 @@ class LoginViewModel: ObservableObject{
             }
         }
     }
+    
+    
     
     func register(){
         if email.isEmpty || password.isEmpty{
