@@ -44,7 +44,7 @@ struct RestaurantCardView: View {
                                     .kerning(0.5)
                                     .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
                                     .foregroundColor(.white)
-                                    .background(Color.green)
+                                    .background(pinkColor)
                                     .cornerRadius(32)
                             }
                             .sheet(isPresented: $isRatingViewPresented) {

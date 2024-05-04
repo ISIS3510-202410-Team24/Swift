@@ -15,7 +15,7 @@ struct RatingView: View {
     
     var body: some View {
         VStack {
-            Text("Rating View")
+            Text("Please rate your order")
                 .font(.title)
             
             // Selector de estrellas para la calificación
@@ -44,6 +44,11 @@ struct RatingView: View {
                 isShowingImagePicker = true
             }) {
                 Text("Subir Foto")
+                    .fontWeight(.medium)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(backroundColor)
+                    .cornerRadius(8)
             }
             
             // Mostrar la imagen seleccionada
@@ -60,6 +65,11 @@ struct RatingView: View {
                 saveRating()
             }) {
                 Text("Guardar")
+                    .fontWeight(.medium)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(pinkColor)
+                    .cornerRadius(8)
             }
             
         }
