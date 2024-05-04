@@ -10,6 +10,8 @@ let pinkColor = Color(UIColor(named: "Pink")!)
 struct RestaurantCardView: View {
     var document: DocumentSnapshot // El documento obtenido de Firestore
     var onDelete: () -> Void // Closure que se ejecutará cuando se elimine la orden
+    @State private var isRatingViewPresented = false // Estado para controlar la presentación de la vista de calificación
+
     
     var body: some View {
         GeometryReader { geometry in
@@ -29,17 +31,39 @@ struct RestaurantCardView: View {
                         .multilineTextAlignment(.center)
                         .foregroundColor(blueColor)
                     
-                    Button(action: {
-                        onDelete()
-                    }) {
-                        Text("Delete")
-                            .fontWeight(.medium)
-                            .font(Font.custom("Roboto", size: 11))
-                            .kerning(0.5)
-                            .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
-                            .foregroundColor(.white)
-                            .background(Color.red)
-                            .cornerRadius(32)
+                    HStack(spacing: 8) {
+                        if let activa = document["activa"] as? Bool, !activa {
+                            Button(action: {
+                                // Acción para calificar el restaurante
+                                isRatingViewPresented = true
+
+                            }) {
+                                Text("Calificar")
+                                    .fontWeight(.medium)
+                                    .font(Font.custom("Roboto", size: 11))
+                                    .kerning(0.5)
+                                    .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                                    .foregroundColor(.white)
+                                    .background(Color.green)
+                                    .cornerRadius(32)
+                            }
+                            .sheet(isPresented: $isRatingViewPresented) {
+                                                            RatingView()
+                                                        }
+                        }
+                        
+                        Button(action: {
+                            onDelete()
+                        }) {
+                            Text("Eliminar")
+                                .fontWeight(.medium)
+                                .font(Font.custom("Roboto", size: 11))
+                                .kerning(0.5)
+                                .padding(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+                                .foregroundColor(.white)
+                                .background(Color.red)
+                                .cornerRadius(32)
+                        }
                     }
                     .padding(.top, 8)
                 }
