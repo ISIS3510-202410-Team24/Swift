@@ -13,6 +13,8 @@ struct RatingView: View {
     @State private var isShowingImagePicker = false // Estado para controlar la presentación del selector de imágenes
     @Environment(\.presentationMode) var presentationMode // Variable de entorno para el modo de presentación
     
+    let maxCommentLength = 100 // Límite máximo de caracteres para el comentario
+    
     var body: some View {
         VStack {
             Text("Please rate your order")
@@ -35,9 +37,24 @@ struct RatingView: View {
             }
             
             // Campo de texto para el comentario
-            TextField("Escribe tu comentario aquí", text: $comment)
+            TextEditor(text: $comment)
                 .padding()
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+                .frame(minHeight: 100, maxHeight: 200) // Altura mínima y máxima de la caja de texto
+                .padding(.horizontal)
+                .onChange(of: comment) { newValue in
+                    // Limitar la longitud del comentario
+                    if newValue.count > maxCommentLength {
+                        comment = String(newValue.prefix(maxCommentLength))
+                    }
+                }
+            
+            // Contador de caracteres
+            Text("\(comment.count)/\(maxCommentLength)")
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
             
             // Botón para seleccionar una foto
             Button(action: {
