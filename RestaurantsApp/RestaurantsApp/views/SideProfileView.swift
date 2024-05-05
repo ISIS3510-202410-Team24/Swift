@@ -15,7 +15,6 @@ struct SideProfileView: View {
     
     var body: some View {
         
-        
         ZStack {
             if isShowing {
                 // Fondo oscuro cuando se muestra el perfil
@@ -45,8 +44,6 @@ struct SideProfileView: View {
                                 .fill(Color.white)
                                 .frame(width: 250, height: 50)
                                 .overlay(
-                                    
-                                   
                                     Text(profileViewModel.profileName)
                                         .font(.title)
                                         .fontWeight(.bold)
@@ -54,7 +51,15 @@ struct SideProfileView: View {
                                         .padding(.horizontal, 20)
                                         .padding(.vertical, 10)
                                 )
-                              
+                                .onAppear {
+                                    // Llama a getNameUser() cuando la vista aparece para obtener el nombre del usuario
+                                    profileViewModel.getNameUser { name in
+                                        if let name = name {
+                                            // Actualiza profileName cuando se obtiene el nombre del usuario
+                                            profileViewModel.profileName = name
+                                        }
+                                    }
+                                }
                             
                             // Correo electrónico del perfil obtenido desde loginViewModel
                             if let savedCredentials = loginViewModel.getSavedCredentials() {

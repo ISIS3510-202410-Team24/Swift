@@ -187,12 +187,13 @@ struct SignUpView: View {
                     .foregroundColor(.gray)
                     .padding(.leading, 10)
                 
-                TextField("Name", text: $name)
-                    .onChange(of: LoginModel.email) { newValue in
-                            if newValue.count > maxLength {
-                                LoginModel.email = String(newValue.prefix(maxLength))
-                            }
+                TextField("Name", text: $LoginModel.name)
+                    .onChange(of: LoginModel.name) { newValue in
+                        if newValue.count > maxLength {
+                            LoginModel.name = String(newValue.prefix(maxLength))
                         }
+                    }
+
                     .padding(15)
                     .keyboardType(.emailAddress)
             }
