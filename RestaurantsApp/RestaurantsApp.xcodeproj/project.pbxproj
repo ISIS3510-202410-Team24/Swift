@@ -25,6 +25,9 @@
 		17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17B8FF632BEAF0B600627AC3 /* FirebaseStorage */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
 		7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */; };
+		7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E262DC22BE6CD9800108229 /* RatingView.swift */; };
+		7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7E262DC42BE6D42200108229 /* FirebaseStorage */; };
+		7E262DC82BE6DA3900108229 /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 7E262DC72BE6DA3900108229 /* Reachability */; };
 		7E38EE652BDAAD6500CE6941 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7E38EE642BDAAD6500CE6941 /* Kingfisher */; };
 		7E484D062BA62C2E0005C093 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */; };
 		7EA3AF692BACD04000D0C9E2 /* RestaurantsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3AF682BACD04000D0C9E2 /* RestaurantsAppTests.swift */; };
@@ -86,6 +89,7 @@
 		17956E6B2BD1F45000F464FA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		17B8FF612BEADEB100627AC3 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		7E262DC22BE6CD9800108229 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		7EA3AF682BACD04000D0C9E2 /* RestaurantsAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppTests.swift; sourceTree = "<group>"; };
 		7EA3AF6A2BACD08B00D0C9E2 /* RestaurantsAppUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITests.swift; sourceTree = "<group>"; };
@@ -122,8 +126,10 @@
 				93C854882BAB57D100EF86F7 /* FirebaseFirestore in Frameworks */,
 				7E38EE652BDAAD6500CE6941 /* Kingfisher in Frameworks */,
 				7EF990832BADF8FD00C0D73A /* FirebaseAnalytics in Frameworks */,
+				7E262DC82BE6DA3900108229 /* Reachability in Frameworks */,
 				7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */,
 				17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */,
+				7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */,
 				7EF990852BADF8FD00C0D73A /* FirebaseAnalyticsSwift in Frameworks */,
 				7EF990872BADF91E00C0D73A /* AdSupport.framework in Frameworks */,
 			);
@@ -169,6 +175,7 @@
 				1756E9EA2BCF436D00FDD2EA /* MapView.swift */,
 				82EDFF2C2BCF273300729696 /* basketView.swift */,
 				17B8FF612BEADEB100627AC3 /* RestaurantView.swift */,
+				7E262DC22BE6CD9800108229 /* RatingView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -313,6 +320,8 @@
 				7EF990842BADF8FD00C0D73A /* FirebaseAnalyticsSwift */,
 				7E38EE642BDAAD6500CE6941 /* Kingfisher */,
 				17B8FF632BEAF0B600627AC3 /* FirebaseStorage */,
+				7E262DC42BE6D42200108229 /* FirebaseStorage */,
+				7E262DC72BE6DA3900108229 /* Reachability */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -389,6 +398,7 @@
 			packageReferences = (
 				1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7E38EE632BDAAD6500CE6941 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */,
 			);
 			productRefGroup = 8224EC8B2B8CDD5900D1592E /* Products */;
 			projectDirPath = "";
@@ -462,6 +472,7 @@
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
 				17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */,
+				7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +636,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -648,7 +659,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -670,7 +681,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -693,7 +704,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -844,6 +855,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7E38EE632BDAAD6500CE6941 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -868,6 +887,16 @@
 		7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FirebaseFirestore;
+		};
+		7E262DC42BE6D42200108229 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		7E262DC72BE6DA3900108229 /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
 		};
 		7E38EE642BDAAD6500CE6941 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;

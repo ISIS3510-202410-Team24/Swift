@@ -5,6 +5,7 @@ import LocalAuthentication
 class LoginViewModel: ObservableObject{
     
     @Published var email = ""
+    @Published var name = ""
     @Published var password = ""
     @Published var isLoggedIn = false
     @Published var isError = false
@@ -18,21 +19,24 @@ class LoginViewModel: ObservableObject{
         UserDefaults.standard.set(email, forKey: "savedEmail")
         // Aquí puedes usar Keychain para almacenar la contraseña de manera segura
         UserDefaults.standard.set(password, forKey: "savedPassword")
+        
+        UserDefaults.standard.set(name, forKey: "savedName")
     }
     
     // Función para recuperar credenciales almacenadas localmente
-    func getSavedCredentials() -> (email: String, password: String)? {
+    func getSavedCredentials() -> (email: String, password: String, name: String)? {
         guard let savedEmail = UserDefaults.standard.string(forKey: "savedEmail"),
-              let savedPassword = UserDefaults.standard.string(forKey: "savedPassword") else {
+              let savedPassword = UserDefaults.standard.string(forKey: "savedPassword"),
+              let savedName = UserDefaults.standard.string(forKey: "savedName") else {
             return nil
         }
-        return (savedEmail, savedPassword)
+        return (savedEmail, savedPassword,savedName)
     }
     
     func login() {
         if email.isEmpty || password.isEmpty {
                 isError = true
-                errorMessage = "Please enter both email and password."
+                errorMessage = "Please enter both email, name and password."
                 return
             }
             
@@ -54,11 +58,13 @@ class LoginViewModel: ObservableObject{
     
     
     func register(){
-        if email.isEmpty || password.isEmpty{
+        if email.isEmpty || password.isEmpty || name.isEmpty {
                 isError = true
-                errorMessage = "Please enter both email and password."
+                errorMessage = "Please enter email, name and password."
                 return
             }
+        
+        
         
         guard isValidEmail(email) else {
                     isError = true
@@ -81,7 +87,11 @@ class LoginViewModel: ObservableObject{
             } else {
                 if let user = Auth.auth().currentUser {
                     let userID = user.uid
-                    FirestoreManager().agregarDocumento(coleccion: "usuario", datos: ["id": userID]) { error in
+                    Firestore.firestore().collection("usuario").document(userID).setData([
+                                        "id": userID,
+                                        "name": self.name
+                                        // Otros datos del usuario que quieras guardar
+                                    ])  { error in
                         if let error = error {
                             print(error.localizedDescription)
                         }
