@@ -4,8 +4,11 @@ import FirebaseFirestore
 struct RestaurantView: View {
     var restaurant: Restaurant
     @State private var menuItems: [MenuItem] = [] // Estado para almacenar los elementos del menú
+    @State private var showAlert = false // Estado para controlar la visibilidad de la alerta
+        
 
     var body: some View {
+        
         VStack(spacing: 10) {
             
             Text(restaurant.name)
@@ -21,8 +24,18 @@ struct RestaurantView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 } placeholder: {
-                    // Placeholder mientras se carga la imagen
-                    ProgressView()
+                    if Reachability.isConnectedToNetwork() {
+                        ProgressView()
+                    } else {
+                        // Mostrar un icono de imagen predeterminado o un mensaje de falta de conexión
+                        // Esto puede ser un icono de imagen predeterminado o un mensaje de texto
+                        Image(systemName: "wifi.slash")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .foregroundColor(.red)
+                            .padding(20)
+                            .frame(width: 150, height: 150)
+                    }
                 }
                 .frame(height: 200) // Altura fija para la imagen
                 
@@ -58,9 +71,19 @@ struct RestaurantView: View {
         }
         .padding()
         .onAppear {
-            fetchMenuItems()
+            
+            if Reachability.isConnectedToNetwork() {
+                fetchMenuItems()
+            } else {
+                // Mostrar el mensaje de falta de conectividad
+                self.showAlert = true
+            }
         }
+        .alert(isPresented: $showAlert) {
+                    Alert(title: Text("No Internet Connection"), message: Text("Please check your internet connection and try again."), dismissButton: .default(Text("OK")))
+                }
     }
+    
 
 
     func fetchMenuItems() {
@@ -92,6 +115,7 @@ struct RestaurantView: View {
             // Aquí puedes realizar cualquier acción después de que se hayan cargado todos los elementos del menú
         }
     }
+
 }
 
 struct MenuItem {
