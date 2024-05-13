@@ -157,11 +157,11 @@
 		170631542BA4C1C000C7FDB1 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				176C711D2BED946400FA01E3 /* ConnectivityMonitor.swift */,
 				170631552BA4C1FA00C7FDB1 /* BottomNavigationBar.swift */,
 				170631602BA4CB0700C7FDB1 /* TopBar.swift */,
 				170631622BA4DB0C00C7FDB1 /* loginView.swift */,
 				7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */,
-				176C711D2BED946400FA01E3 /* ConnectivityMonitor.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -640,7 +640,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -685,7 +685,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
