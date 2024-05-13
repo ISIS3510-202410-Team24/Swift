@@ -11,6 +11,8 @@ import FirebaseStorage
 import FirebaseFirestore
 import FirebaseAuth
 import SwiftUI
+import UIKit
+
 
 // Función para obtener la imagen del usuario
 
@@ -18,8 +20,9 @@ class ProfileViewModel:ObservableObject {
     @Published var documents: [DocumentSnapshot] = []
     @Published var profileName: String = ""
     @Published var profileImage: Image?
-    
-
+    @Published var savedPreferences: [String] = [] // Agregar una propiedad para almacenar las preferencias
+        
+   
 
     func saveProfileImage(image: UIImage) {
         guard let data = image.jpegData(compressionQuality: 0.8) else {
@@ -107,32 +110,94 @@ class ProfileViewModel:ObservableObject {
 
     
     func getProfileImage(completion: @escaping (UIImage?) -> Void) {
-            guard let currentUserID = Auth.auth().currentUser?.uid else {
-                // Manejar el caso en que el usuario actual no esté autenticado
+        guard let currentUserID = Auth.auth().currentUser?.uid else {
+            // Manejar el caso en que el usuario actual no esté autenticado
+            completion(nil)
+            return
+        }
+
+        // Verificar si la imagen está en la caché local
+        if let cachedImageData = UserDefaults.standard.data(forKey: "profileImage_\(currentUserID)"),
+           let profileImage = UIImage(data: cachedImageData) {
+            // Devolver la imagen desde la caché local
+            completion(profileImage)
+            return
+        }
+
+        let storageRef = Storage.storage().reference().child("profile_images")
+        let userImageRef = storageRef.child("\(currentUserID).jpg")
+
+        userImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                // Manejar el caso en que ocurra un error al obtener la imagen
+                print("Error al obtener la imagen del perfil:", error.localizedDescription)
                 completion(nil)
-                return
-            }
-
-            let storageRef = Storage.storage().reference().child("profile_images")
-            let userImageRef = storageRef.child("\(currentUserID).jpg")
-
-            userImageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                if let error = error {
-                    // Manejar el caso en que ocurra un error al obtener la imagen
-                    print("Error al obtener la imagen del perfil:", error.localizedDescription)
-                    completion(nil)
+            } else {
+                if let imageData = data, let profileImage = UIImage(data: imageData) {
+                    // Guardar la imagen en la caché local
+                    UserDefaults.standard.set(imageData, forKey: "profileImage_\(currentUserID)")
+                    // Devolver la imagen del perfil
+                    completion(profileImage)
                 } else {
-                    if let imageData = data, let profileImage = UIImage(data: imageData) {
-                        // Devolver la imagen del perfil
-                        completion(profileImage)
-                    } else {
-                        // No se pudo convertir los datos en una imagen
-                        completion(nil)
-                    }
+                    // No se pudo convertir los datos en una imagen
+                    completion(nil)
                 }
             }
         }
+    }
+
     
+    
+    
+    func savePreferences(preferences: [String]) {
+            guard let currentUserID = Auth.auth().currentUser?.uid else {
+                // Manejar el caso en el que el usuario actual no esté autenticado
+                return
+            }
+            
+            // Referencia al documento de preferencias del usuario
+            let preferencesRef = Firestore.firestore().collection("usuario").document(currentUserID).collection("preferences").document("user_preferences")
+            
+            // Guardar las preferencias en Firestore
+            preferencesRef.setData(["preferences": preferences]) { error in
+                if let error = error {
+                    // Manejar el caso en el que ocurra un error al guardar las preferencias
+                    print("Error al guardar las preferencias:", error.localizedDescription)
+                } else {
+                    print("Preferencias guardadas con éxito")
+                }
+            }
+            self.savedPreferences = preferences
+        }
+    
+    func getPreferences(completion: @escaping ([String]?) -> Void) {
+           guard let currentUserID = Auth.auth().currentUser?.uid else {
+               // Manejar el caso en el que el usuario actual no esté autenticado
+               completion(nil)
+               return
+           }
+           
+           // Referencia al documento de preferencias del usuario
+           let preferencesRef = Firestore.firestore().collection("usuario").document(currentUserID).collection("preferences").document("user_preferences")
+           
+           // Obtener las preferencias guardadas en Firestore
+           preferencesRef.getDocument { snapshot, error in
+               if let error = error {
+                   // Manejar el caso en el que ocurra un error al obtener las preferencias
+                   print("Error al obtener las preferencias:", error.localizedDescription)
+                   completion(nil)
+               } else {
+                   if let preferencesData = snapshot?.data(),
+                      let preferences = preferencesData["preferences"] as? [String] {
+                       // Devolver las preferencias obtenidas
+                       completion(preferences)
+                   } else {
+                       // Manejar el caso en el que no se encuentren preferencias o el formato sea incorrecto
+                       completion(nil)
+                   }
+               }
+           }
+       }
     
     
     }

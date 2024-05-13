@@ -12,11 +12,13 @@ struct SideProfileView: View {
     @ObservedObject var profileViewModel = ProfileViewModel()
     @Binding var isShowing: Bool
     @State private var showingPreferences = false
-    @State private var selectedImage: UIImage? // Estado para almacenar la imagen seleccionada
-    @State private var isShowingImagePicker = false // Estado para controlar la presentación del selector de imágenes
+    @State private var selectedImage: UIImage?
+    @State private var isShowingImagePicker = false
     @State private var profileImage: Image?
     @State private var isLoadingImage = true
-       
+    @State private var showPreferences = false
+    @State private var userPreferences: [String] = []
+    
     var body: some View {
         
         ZStack {
@@ -50,23 +52,59 @@ struct SideProfileView: View {
                         } else {
                             // Si la imagen se ha cargado, la muestra
                             
-                                profileImage?
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 230, height: 200)
-                                    .clipShape(Circle())
-                                    .padding(.bottom, 20)
-                                    .onTapGesture {
-                                        // Acción al tocar la imagen
-                                    }
+                            profileImage?
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 230, height: 200)
+                                .clipShape(Circle())
+                                .padding(.bottom, 20)
+                                .onTapGesture {
+                                    // Acción al tocar la imagen
+                                }
                             
                         }
-
-
-                                
+                        
+                        Button(action: {
+                            isShowingImagePicker = true
+                        }) {
+                            Text("Cambiar Imagen")
+                                .font(.caption) // Cambia el tamaño de la fuente
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 15) // Reducir el padding horizontal
+                                .padding(.vertical, 6) // Reducir el padding vertical
+                                .background(Constants.Alerts)
+                                .cornerRadius(8)
+                        }
+                        
+                        if selectedImage != nil{
+                            
+                            Text("guarda los cambios")
+                                .padding()
+                                .foregroundColor(.white)
+                            
+                            // Botón para guardar los datos y cerrar la vista
+                            Button(action: {
+                                if let image = selectedImage {
+                                    profileViewModel.saveProfileImage(image: image)
+                                    profileImage = Image(uiImage: image)
+                                    selectedImage = nil // ¿Podría ser este el origen del error?
+                                }
+                            }) {
+                                Text("Guardar")
+                                    .fontWeight(.medium)
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .background(Color.red)
+                                    .cornerRadius(8)
+                            }
+                            
+                            
+                        }
                         
                         
-                        VStack(alignment: .leading, spacing: 10) {
+                        
+                        VStack(alignment: .center, spacing: 10) {
                             
                             // Nombre del perfil obtenido desde profileViewModel
                             RoundedRectangle(cornerRadius: 10)
@@ -109,7 +147,7 @@ struct SideProfileView: View {
                             
                             // Botón para las preferencias
                             Button(action: {
-                                showingPreferences.toggle()
+                                showPreferences.toggle()
                             }) {
                                 Text("Preferencias")
                                     .font(.title3)
@@ -119,48 +157,50 @@ struct SideProfileView: View {
                                     .padding(.vertical, 10)
                                     .background(Constants.Alerts)
                                     .cornerRadius(8)
-                            }.sheet(isPresented: $showingPreferences) {
-                                PreferencesView()
-                            }
-                            
-                            Button(action: {
-                                isShowingImagePicker = true
-                            }) {
-                                Text("Cambiar Imagen")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.black)
-                                    .padding(.horizontal, 25)
-                                    .padding(.vertical, 10)
-                                    .background(Constants.Alerts)
-                                    .cornerRadius(8)
-                            }
-                            
-                            if selectedImage != nil{
-                                
-                                Text("Se cargó la imagen, guarda los cambios")
-                                    .padding()
-                                    .foregroundColor(.white)
-                                
-                                // Botón para guardar los datos y cerrar la vista
-                                Button(action: {
-                                    if let image = selectedImage {
-                                        profileViewModel.saveProfileImage(image: image)
-                                        profileImage = Image(uiImage: image)
-                                        selectedImage = nil // ¿Podría ser este el origen del error?
+                                    .sheet(isPresented: $showPreferences) {
+                                        PreferencesView(isShowingPreferences: $showPreferences)
                                     }
-                                }) {
-                                    Text("Guardar")
-                                        .fontWeight(.medium)
-                                        .padding()
-                                        .foregroundColor(.white)
-                                        .background(Constants.pinkColor)
-                                        .cornerRadius(8)
-                                }
-
-
-                                
                             }
+                            
+                            
+                            
+                            
+                            /*
+                            if !userPreferences.isEmpty {
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("Tus Preferencias: ")
+                                        .font(.headline)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.black)
+                                    
+                                    ForEach(userPreferences, id: \.self) { preference in
+                                        Text(preference)
+                                            .font(.subheadline)
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 3)
+                                .padding(.top, 20)
+                            }
+                            */
+                            
+                            // Organiza las imágenes en filas de tres
+                            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
+                                ForEach(0..<userPreferences.count, id: \.self) { index in
+                                    Image(userPreferences[index]) // Suponiendo que userPreferences contiene los nombres de las imágenes de comida
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 50, height: 50)
+                                        .clipShape(Circle())
+                                }
+                            }
+                            .padding(.vertical, 10) // Agrega un espacio vertical después de las imágenes
+                            .padding(.horizontal, 10) // Ajusta el espacio horizontal entre las imágenes
+
+                            
                         }
                         
                         // Más detalles del perfil, si es necesario
@@ -175,6 +215,22 @@ struct SideProfileView: View {
                     .sheet(isPresented: $isShowingImagePicker) {
                         ImagePicker(selectedImage: $selectedImage, isPresented: $isShowingImagePicker)
                     }
+                    .onAppear {
+                        // Obtener las preferencias del usuario al cargar la vista
+                        profileViewModel.getPreferences { preferences in
+                            if let preferences = preferences {
+                                userPreferences = preferences
+                            }
+                        }
+                    }
+                    .onReceive(profileViewModel.$savedPreferences) { savedPreferences in
+                        self.userPreferences = savedPreferences
+                    }
+
+
+
+                    
+                    
                 }
                 
                 ScrollView {
@@ -190,100 +246,149 @@ struct SideProfileView: View {
         static let Alerts: Color = Color(red: 0.78, green: 0.59, blue: 0.75)
         static let pinkColor = Color.pink // Agrega este color para usarlo en la vista
     }
-}
-
-
-
-struct PreferencesView: View {
-    @State private var selectedOptions: Set<String> = []
-
-    var body: some View {
-        VStack {
-            Text("Selecciona tus preferencias")
-                .font(.headline)
-                .padding()
-
-            HStack {
-                Button(action: {
-                    if selectedOptions.contains("Vegetariana") {
-                        selectedOptions.remove("Vegetariana")
-                    } else {
-                        selectedOptions.insert("Vegetariana")
-                    }
-                }) {
-                    Text("Vegetariana")
-                        .fontWeight(.bold)
-                        .padding()
-                        .foregroundColor(selectedOptions.contains("Vegetariana") ? .white : .black)
-                }
-                .background(selectedOptions.contains("Vegetariana") ? Color.green : Color.gray)
-                .cornerRadius(8)
-
-                Button(action: {
-                    if selectedOptions.contains("Comida de mar") {
-                        selectedOptions.remove("Comida de mar")
-                    } else {
-                        selectedOptions.insert("Comida de mar")
-                    }
-                }) {
-                    Text("Comida de mar")
-                        .fontWeight(.bold)
-                        .padding()
-                        .foregroundColor(selectedOptions.contains("Comida de mar") ? .white : .black)
-                }
-                .background(selectedOptions.contains("Comida de mar") ? Color.green : Color.gray)
-                .cornerRadius(8)
-            }
-
-            HStack {
-                Button(action: {
-                    if selectedOptions.contains("Pasta") {
-                        selectedOptions.remove("Pasta")
-                    } else {
-                        selectedOptions.insert("Pasta")
-                    }
-                }) {
-                    Text("Pasta")
-                        .fontWeight(.bold)
-                        .padding()
-                        .foregroundColor(selectedOptions.contains("Pasta") ? .white : .black)
-                }
-                .background(selectedOptions.contains("Pasta") ? Color.green : Color.gray)
-                .cornerRadius(8)
-
-                Button(action: {
-                    if selectedOptions.contains("Saludable") {
-                        selectedOptions.remove("Saludable")
-                    } else {
-                        selectedOptions.insert("Saludable")
-                    }
-                }) {
-                    Text("Saludable")
-                        .fontWeight(.bold)
-                        .padding()
-                        .foregroundColor(selectedOptions.contains("Saludable") ? .white : .black)
-                }
-                .background(selectedOptions.contains("Saludable") ? Color.green : Color.gray)
-                .cornerRadius(8)
-            }
-
-            Button(action: {
-                // Aquí puedes guardar las opciones seleccionadas
-            }) {
-                Text("Guardar")
-                    .fontWeight(.bold)
+    
+    struct PreferencesView: View {
+        @State private var selectedOptions: Set<String> = []
+        @ObservedObject var profileViewModel = ProfileViewModel()
+        @Binding var isShowingPreferences: Bool
+        
+        var body: some View {
+            VStack(spacing: 30) { // Aumenta el espacio entre los elementos
+                Text("Selecciona tus preferencias")
+                    .font(.headline)
                     .padding()
-                    .foregroundColor(.white)
+                
+                HStack {
+                    // Botón para Vegetariana
+                    Button(action: {
+                        toggleOption("Vegetariana")
+                    }) {
+                        Text("Vegetariana")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Vegetariana") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Vegetariana") ? Constants.Alerts: Color.gray)
+                    .cornerRadius(8)
+                    
+                    // Botón para Comida de mar
+                    Button(action: {
+                        toggleOption("Comida de mar")
+                    }) {
+                        Text("Comida de mar")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Comida de mar") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Comida de mar") ?  Constants.Alerts : Color.gray)
+                    .cornerRadius(8)
+                    
+                    // Agregar más botones para las nuevas preferencias
+                    // Por ejemplo, para hamburguesas
+                    Button(action: {
+                        toggleOption("Hamburguesas")
+                    }) {
+                        Text("Hamburguesas")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Hamburguesas") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Hamburguesas") ?  Constants.Alerts: Color.gray)
+                    .cornerRadius(8)
+                    
+                    // Botón para Pollo
+                    Button(action: {
+                        toggleOption("Pollo")
+                    }) {
+                        Text("Pollo")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Pollo") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Pollo") ? Constants.Alerts : Color.gray)
+                    .cornerRadius(8)
+                }
+                
+                HStack {
+                    // Botón para Parrilla
+                    Button(action: {
+                        toggleOption("Parrilla")
+                    }) {
+                        Text("Parrilla")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Parrilla") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Parrilla") ? Constants.Alerts: Color.gray)
+                    .cornerRadius(8)
+                    
+                    // Botón para Mexicana
+                    Button(action: {
+                        toggleOption("Mexicana")
+                    }) {
+                        Text("Mexicana")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Mexicana") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Mexicana") ? Constants.Alerts : Color.gray)
+                    .cornerRadius(8)
+                    
+                    // Botón para Asiática
+                    Button(action: {
+                        toggleOption("Asiática")
+                    }) {
+                        Text("Asiática")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(selectedOptions.contains("Asiática") ? .white : .black)
+                    }
+                    .background(selectedOptions.contains("Asiática") ? Constants.Alerts : Color.gray)
+                    .cornerRadius(8)
+                }
+                
+                // Botón Guardar y Cancelar
+                HStack(spacing: 20) { // Aumenta el espacio entre los botones
+                    Button(action: {
+                        let selectedOptionsArray = Array(selectedOptions)
+                        profileViewModel.savePreferences(preferences: selectedOptionsArray)
+                        profileViewModel.savedPreferences = selectedOptionsArray
+                        isShowingPreferences = false
+                    }) {
+                        Text("Guardar")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(.white)
+                    }
+                    .background(Color.green)
+                    .cornerRadius(8)
+                    
+                    Button(action: {
+                        isShowingPreferences = false
+                    }) {
+                        Text("Cancelar")
+                            .fontWeight(.bold)
+                            .padding()
+                            .foregroundColor(.white)
+                    }
+                    .background(Color.red)
+                    .cornerRadius(8)
+                }
             }
-            .background(Color.blue)
-            .cornerRadius(8)
+            .padding()
+            .frame(maxHeight: .infinity) // Expandir verticalmente
+            .background(Color.white)
+            .cornerRadius(10)
+            .padding()
         }
-        .padding()
-        .frame(maxHeight: .infinity) // Expandir verticalmente
-        .background(Color.white)
-        .cornerRadius(10)
-        .padding()
+        
+        // Función para alternar la selección de una opción
+        private func toggleOption(_ option: String) {
+            if selectedOptions.contains(option) {
+                selectedOptions.remove(option)
+            } else {
+                selectedOptions.insert(option)
+            }
+        }
     }
 }
-
-

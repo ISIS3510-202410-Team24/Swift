@@ -20,7 +20,6 @@
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
 		1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */; };
-		176C711E2BED946400FA01E3 /* ConnectivityMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176C711D2BED946400FA01E3 /* ConnectivityMonitor.swift */; };
 		17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17956E6B2BD1F45000F464FA /* MapViewModel.swift */; };
 		17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8FF612BEADEB100627AC3 /* RestaurantView.swift */; };
 		17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17B8FF632BEAF0B600627AC3 /* FirebaseStorage */; };
@@ -87,7 +86,6 @@
 		1756E9EA2BCF436D00FDD2EA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantModel.swift; sourceTree = "<group>"; };
 		1756E9EF2BCF4FCF00FDD2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		176C711D2BED946400FA01E3 /* ConnectivityMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityMonitor.swift; sourceTree = "<group>"; };
 		17956E6B2BD1F45000F464FA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		17B8FF612BEADEB100627AC3 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -157,7 +155,6 @@
 		170631542BA4C1C000C7FDB1 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				176C711D2BED946400FA01E3 /* ConnectivityMonitor.swift */,
 				170631552BA4C1FA00C7FDB1 /* BottomNavigationBar.swift */,
 				170631602BA4CB0700C7FDB1 /* TopBar.swift */,
 				170631622BA4DB0C00C7FDB1 /* loginView.swift */,
@@ -474,7 +471,6 @@
 				82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */,
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
-				176C711E2BED946400FA01E3 /* ConnectivityMonitor.swift in Sources */,
 				17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */,
 				7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */,
 			);
@@ -657,7 +653,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
@@ -702,7 +698,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
