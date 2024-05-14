@@ -13,6 +13,8 @@ struct MapView: View {
     @ObservedObject var mapViewModel = MapViewModel()
     @State private var isDataLoaded = false
     @State private var selectedRestaurant: Restaurant? = nil // Variable para el restaurante seleccionado
+    @State private var showAlert = false // Estado para controlar la visibilidad de la alerta
+
     
     var body: some View {
         NavigationView { // Envuelve la vista en un NavigationView
@@ -49,8 +51,17 @@ struct MapView: View {
                 RestaurantView(restaurant: restaurant) // Abrir la vista de detalle del restaurante cuando se selecciona
             }
             .onAppear {
-                mapViewModel.filterRestaurants() // Filtro inicial (opcional)
+                
+                if Reachability.isConnectedToNetwork() {
+                    mapViewModel.filterRestaurants()
+                } else {
+                    // Mostrar el mensaje de falta de conectividad
+                    self.showAlert = true
+                }
             }
+            .alert(isPresented: $showAlert) {
+                        Alert(title: Text("No Internet Connection"), message: Text("Please check your internet connection and try again."), dismissButton: .default(Text("OK")))
+                    }
             .onReceive(restaurantViewModel.$restaurants) { restaurants in
                 if !restaurants.isEmpty {
                     mapViewModel.checkIfLocationServicesIsEnabled()

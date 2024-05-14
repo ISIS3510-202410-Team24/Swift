@@ -24,6 +24,7 @@
 		17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8FF612BEADEB100627AC3 /* RestaurantView.swift */; };
 		17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17B8FF632BEAF0B600627AC3 /* FirebaseStorage */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
+		17F5041B2BF425E400A526F9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */; };
 		7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */; };
 		7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E262DC22BE6CD9800108229 /* RatingView.swift */; };
 		7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7E262DC42BE6D42200108229 /* FirebaseStorage */; };
@@ -130,6 +131,7 @@
 				7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */,
 				17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */,
 				7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */,
+				17F5041B2BF425E400A526F9 /* SDWebImageSwiftUI in Frameworks */,
 				7EF990852BADF8FD00C0D73A /* FirebaseAnalyticsSwift in Frameworks */,
 				7EF990872BADF91E00C0D73A /* AdSupport.framework in Frameworks */,
 			);
@@ -322,6 +324,7 @@
 				17B8FF632BEAF0B600627AC3 /* FirebaseStorage */,
 				7E262DC42BE6D42200108229 /* FirebaseStorage */,
 				7E262DC72BE6DA3900108229 /* Reachability */,
+				17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -399,6 +402,7 @@
 				1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7E38EE632BDAAD6500CE6941 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */,
+				17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 8224EC8B2B8CDD5900D1592E /* Products */;
 			projectDirPath = "";
@@ -855,6 +859,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 		7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
@@ -883,6 +895,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

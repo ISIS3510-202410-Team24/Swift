@@ -1,14 +1,14 @@
 import SwiftUI
 import FirebaseFirestore
+import SDWebImageSwiftUI
 
 struct RestaurantView: View {
     var restaurant: Restaurant
     @State private var menuItems: [MenuItem] = [] // Estado para almacenar los elementos del menú
     @State private var showAlert = false // Estado para controlar la visibilidad de la alerta
-        
+
 
     var body: some View {
-        
         VStack(spacing: 10) {
             
             Text(restaurant.name)
@@ -18,26 +18,19 @@ struct RestaurantView: View {
                 .multilineTextAlignment(.center)
             
             HStack {
-                // Mostrar la imagen del restaurante
-                AsyncImage(url: restaurant.imageURL) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                } placeholder: {
-                    if Reachability.isConnectedToNetwork() {
-                        ProgressView()
-                    } else {
-                        // Mostrar un icono de imagen predeterminado o un mensaje de falta de conexión
-                        // Esto puede ser un icono de imagen predeterminado o un mensaje de texto
-                        Image(systemName: "wifi.slash")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .foregroundColor(.red)
-                            .padding(20)
-                            .frame(width: 150, height: 150)
+                // Mostrar la imagen del restaurante con caché
+                WebImage(url: restaurant.imageURL){image in
+                    image.resizable()
+                }placeholder: {
+                    ProgressView()
+            }
+                    .onSuccess { image, data, cacheType in
+                        // Success block you can use to perform any actions
                     }
-                }
-                .frame(height: 200) // Altura fija para la imagen
+                    .resizable()
+                    .indicator(.activity) // Show activity indicator while loading
+                    .transition(.fade(duration: 0.5)) // Fade transition
+                    .frame(height: 200) // Altura fija para la imagen
                 
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Address: \(restaurant.address)")
@@ -83,8 +76,6 @@ struct RestaurantView: View {
                     Alert(title: Text("No Internet Connection"), message: Text("Please check your internet connection and try again."), dismissButton: .default(Text("OK")))
                 }
     }
-    
-
 
     func fetchMenuItems() {
         let db = Firestore.firestore()
@@ -115,7 +106,6 @@ struct RestaurantView: View {
             // Aquí puedes realizar cualquier acción después de que se hayan cargado todos los elementos del menú
         }
     }
-
 }
 
 struct MenuItem {
