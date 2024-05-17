@@ -18,6 +18,7 @@ struct SideProfileView: View {
     @State private var isLoadingImage = true
     @State private var showPreferences = false
     @State private var userPreferences: [String] = []
+    @State private var isInternetAvailable = true
     
     var body: some View {
         
@@ -215,23 +216,36 @@ struct SideProfileView: View {
                     .sheet(isPresented: $isShowingImagePicker) {
                         ImagePicker(selectedImage: $selectedImage, isPresented: $isShowingImagePicker)
                     }
-                    .onAppear {
-                        // Obtener las preferencias del usuario al cargar la vista
-                        profileViewModel.getPreferences { preferences in
-                            if let preferences = preferences {
-                                userPreferences = preferences
-                            }
+                    
+
+                }  
+                .onAppear {
+                    // Obtener las preferencias del usuario al cargar la vista
+                    profileViewModel.getPreferences { preferences in
+                        if let preferences = preferences {
+                            userPreferences = preferences
                         }
                     }
-                    .onReceive(profileViewModel.$savedPreferences) { savedPreferences in
-                        self.userPreferences = savedPreferences
-                    }
-
-
-
-                    
-                    
                 }
+                .onReceive(profileViewModel.$savedPreferences) { savedPreferences in
+                    self.userPreferences = savedPreferences
+                }
+                .onAppear {
+                    // Check Internet connection
+                    isInternetAvailable = Reachability.isConnectedToNetwork()
+                    if !isInternetAvailable {
+                        // Show alert if no Internet
+                        showingPreferences = true
+                    }
+                }
+                .alert(isPresented: $showingPreferences) {
+                    Alert(
+                        title: Text("No hay conexión a Internet"),
+                        message: Text("La imagen fue guardada en caché, pero otros cambios adicionales no serán guardados hasta reconectar."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+
                 
                 ScrollView {
                     VStack {
