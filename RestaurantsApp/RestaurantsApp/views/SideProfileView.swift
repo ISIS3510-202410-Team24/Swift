@@ -17,11 +17,9 @@ struct SideProfileView: View {
     @State private var profileImage: Image?
     @State private var isLoadingImage = true
     @State private var showPreferences = false
-    @State private var userPreferences: [String] = []
     @State private var isInternetAvailable = true
     
     var body: some View {
-        
         ZStack {
             if isShowing {
                 // Fondo oscuro cuando se muestra el perfil
@@ -31,28 +29,22 @@ struct SideProfileView: View {
                     .onTapGesture { isShowing.toggle() }
                 
                 HStack {
-                    
                     Spacer().frame(height: 20)
                     
                     VStack(alignment: .center, spacing: 16) {
-                        
                         // Imagen del perfil
                         if isLoadingImage {
-                            // Si se está cargando la imagen, muestra un indicador de carga
                             ProgressView("Cargando imagen...")
                                 .onAppear {
                                     // Cuando la vista aparece, solicita la imagen del perfil
                                     profileViewModel.getProfileImage { loadedImage in
-                                        // Una vez que la imagen se ha cargado, actualiza isLoadingImage y asigna la imagen al profileImage
                                         isLoadingImage = false
                                         if let loadedImage = loadedImage {
-                                            profileImage = Image(uiImage: loadedImage) // Convierte la UIImage a Image
+                                            profileImage = Image(uiImage: loadedImage)
                                         }
                                     }
                                 }
                         } else {
-                            // Si la imagen se ha cargado, la muestra
-                            
                             profileImage?
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
@@ -62,34 +54,31 @@ struct SideProfileView: View {
                                 .onTapGesture {
                                     // Acción al tocar la imagen
                                 }
-                            
                         }
                         
                         Button(action: {
                             isShowingImagePicker = true
                         }) {
                             Text("Cambiar Imagen")
-                                .font(.caption) // Cambia el tamaño de la fuente
+                                .font(.caption)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
-                                .padding(.horizontal, 15) // Reducir el padding horizontal
-                                .padding(.vertical, 6) // Reducir el padding vertical
+                                .padding(.horizontal, 15)
+                                .padding(.vertical, 6)
                                 .background(Constants.Alerts)
                                 .cornerRadius(8)
                         }
                         
-                        if selectedImage != nil{
-                            
+                        if selectedImage != nil {
                             Text("guarda los cambios")
                                 .padding()
                                 .foregroundColor(.white)
                             
-                            // Botón para guardar los datos y cerrar la vista
                             Button(action: {
                                 if let image = selectedImage {
                                     profileViewModel.saveProfileImage(image: image)
                                     profileImage = Image(uiImage: image)
-                                    selectedImage = nil // ¿Podría ser este el origen del error?
+                                    selectedImage = nil
                                 }
                             }) {
                                 Text("Guardar")
@@ -99,20 +88,15 @@ struct SideProfileView: View {
                                     .background(Color.red)
                                     .cornerRadius(8)
                             }
-                            
-                            
                         }
                         
-                        
-                        
                         VStack(alignment: .center, spacing: 10) {
-                            
-                            // Nombre del perfil obtenido desde profileViewModel
+                            // Nombre del perfil
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.white)
                                 .frame(width: 250, height: 50)
                                 .overlay(
-                                    Text(profileViewModel.profileName)
+                                    Text(profileViewModel.profileName) // Utiliza el nombre de perfil del ViewModel
                                         .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundColor(.black)
@@ -120,13 +104,10 @@ struct SideProfileView: View {
                                         .padding(.vertical, 10)
                                 )
                                 .onAppear {
-                                    profileViewModel.getNameUser { name in
-                                        if let name = name {
-                                            profileViewModel.profileName = name
-                                        }
-                                    }
+                                    profileViewModel.getProfileName() // Actualiza el nombre de perfil al aparecer la vista
                                 }
-                            // Correo electrónico del perfil obtenido desde loginViewModel
+                            
+                            // Correo electrónico del perfil
                             if let savedCredentials = loginViewModel.getSavedCredentials() {
                                 let email = savedCredentials.email
                                 RoundedRectangle(cornerRadius: 10)
@@ -134,13 +115,12 @@ struct SideProfileView: View {
                                     .frame(width: 260, height: 50)
                                     .overlay(
                                         Text("\(email)")
-                                            .font(.subheadline) // Aquí cambia a .subheadline
+                                            .font(.subheadline)
                                             .fontWeight(.bold)
                                             .foregroundColor(.black)
                                             .padding(.horizontal, 20)
                                             .padding(.vertical, 10)
                                     )
-                                
                             } else {
                                 Text("No se ha guardado ningún correo electrónico")
                                     .foregroundColor(.red)
@@ -163,48 +143,19 @@ struct SideProfileView: View {
                                     }
                             }
                             
-                            
-                            
-                            
-                            /*
-                            if !userPreferences.isEmpty {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("Tus Preferencias: ")
-                                        .font(.headline)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.black)
-                                    
-                                    ForEach(userPreferences, id: \.self) { preference in
-                                        Text(preference)
-                                            .font(.subheadline)
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(10)
-                                .shadow(radius: 3)
-                                .padding(.top, 20)
-                            }
-                            */
-                            
                             // Organiza las imágenes en filas de tres
                             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())], spacing: 20) {
-                                ForEach(0..<userPreferences.count, id: \.self) { index in
-                                    Image(userPreferences[index]) // Suponiendo que userPreferences contiene los nombres de las imágenes de comida
+                                ForEach(0..<profileViewModel.savedPreferences.count, id: \.self) { index in
+                                    Image(profileViewModel.savedPreferences[index]) // Utiliza las preferencias del ViewModel
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 50, height: 50)
                                         .clipShape(Circle())
                                 }
                             }
-                            .padding(.vertical, 10) // Agrega un espacio vertical después de las imágenes
-                            .padding(.horizontal, 10) // Ajusta el espacio horizontal entre las imágenes
-
-                            
+                            .padding(.vertical, 10)
+                            .padding(.horizontal, 10)
                         }
-                        
-                        // Más detalles del perfil, si es necesario
                         
                         Spacer()
                     }
@@ -216,25 +167,12 @@ struct SideProfileView: View {
                     .sheet(isPresented: $isShowingImagePicker) {
                         ImagePicker(selectedImage: $selectedImage, isPresented: $isShowingImagePicker)
                     }
-                    
-
-                }  
-                .onAppear {
-                    // Obtener las preferencias del usuario al cargar la vista
-                    profileViewModel.getPreferences { preferences in
-                        if let preferences = preferences {
-                            userPreferences = preferences
-                        }
-                    }
-                }
-                .onReceive(profileViewModel.$savedPreferences) { savedPreferences in
-                    self.userPreferences = savedPreferences
                 }
                 .onAppear {
-                    // Check Internet connection
+                    // Comprueba la conexión a Internet al cargar la vista
                     isInternetAvailable = Reachability.isConnectedToNetwork()
                     if !isInternetAvailable {
-                        // Show alert if no Internet
+                        // Muestra una alerta si no hay conexión a Internet
                         showingPreferences = true
                     }
                 }
@@ -245,11 +183,12 @@ struct SideProfileView: View {
                         dismissButton: .default(Text("OK"))
                     )
                 }
-
-                
-                ScrollView {
-                    VStack {
-                        // Contenido adicional del perfil, si es necesario
+                .onAppear {
+                    // Obtener las preferencias del usuario al cargar la vista
+                    profileViewModel.getPreferences { preferences in
+                        if let preferences = preferences {
+                            profileViewModel.savedPreferences = preferences // Actualiza las preferencias del ViewModel
+                        }
                     }
                 }
             }
@@ -258,8 +197,9 @@ struct SideProfileView: View {
     
     struct Constants {
         static let Alerts: Color = Color(red: 0.78, green: 0.59, blue: 0.75)
-        static let pinkColor = Color.pink // Agrega este color para usarlo en la vista
     }
+}
+
     
     struct PreferencesView: View {
         @State private var selectedOptions: Set<String> = []
@@ -405,4 +345,4 @@ struct SideProfileView: View {
             }
         }
     }
-}
+
