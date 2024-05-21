@@ -146,7 +146,10 @@ class ProfileViewModel:ObservableObject {
         }
     }
 
-    
+    //Acá se guardan en cache
+    class PreferencesCache {
+        static var userPreferences: [String] = []
+    }
     
     
     func savePreferences(preferences: [String]) {
@@ -167,6 +170,7 @@ class ProfileViewModel:ObservableObject {
                     print("Preferencias guardadas con éxito")
                 }
             }
+            PreferencesCache.userPreferences = preferences
             self.savedPreferences = preferences
         }
     
@@ -198,6 +202,62 @@ class ProfileViewModel:ObservableObject {
                }
            }
        }
+    
+    func saveProfileName(name: String) {
+            guard let currentUserID = Auth.auth().currentUser?.uid else {
+                // Manejar el caso en que el usuario actual no esté autenticado
+                return
+            }
+            
+            // Referencia al documento de perfil del usuario en Firestore
+            let profileRef = Firestore.firestore().collection("usuario").document(currentUserID)
+            
+            // Guardar el nombre de usuario en Firestore
+            profileRef.setData(["name": name], merge: true) { error in
+                if let error = error {
+                    // Manejar el caso en que ocurra un error al guardar el nombre de usuario en Firestore
+                    print("Error al guardar el nombre de usuario:", error.localizedDescription)
+                } else {
+                    print("Nombre de usuario guardado con éxito en Firestore")
+                }
+            }
+            
+            // Guardar el nombre de usuario en la caché local (UserDefaults)
+            UserDefaults.standard.set(name, forKey: "profileName_\(currentUserID)")
+            
+            // Actualizar la propiedad profileName
+            self.profileName = name
+        }
+
+        // Obtiene el nombre de usuario de Firestore y la caché local
+        func getProfileName() {
+            guard let currentUserID = Auth.auth().currentUser?.uid else {
+                // Manejar el caso en que el usuario actual no esté autenticado
+                return
+            }
+            
+            // Referencia al documento de perfil del usuario en Firestore
+            let profileRef = Firestore.firestore().collection("usuario").document(currentUserID)
+            
+            // Obtener el nombre de usuario de Firestore
+            profileRef.getDocument { document, error in
+                if let error = error {
+                    // Manejar el caso en que ocurra un error al obtener el nombre de usuario de Firestore
+                    print("Error al obtener el nombre de usuario de Firestore:", error.localizedDescription)
+                } else {
+                    if let document = document, document.exists {
+                        if let name = document.data()?["name"] as? String {
+                            // Actualizar la propiedad profileName con el nombre de usuario obtenido
+                            self.profileName = name
+                            
+                            // Guardar el nombre de usuario en la caché local (UserDefaults)
+                            UserDefaults.standard.set(name, forKey: "profileName_\(currentUserID)")
+                        }
+                    }
+                }
+            }
+        }
+
     
     
     }
