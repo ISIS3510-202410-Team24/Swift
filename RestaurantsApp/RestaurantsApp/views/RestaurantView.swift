@@ -6,7 +6,7 @@ struct RestaurantView: View {
     var restaurant: Restaurant
     @State private var menuItems: [MenuItem] = [] // Estado para almacenar los elementos del menú
     @State private var showAlert = false // Estado para controlar la visibilidad de la alerta
-    @ObservedObject var cart = Cart() // ObservedObject para el carrito
+    @ObservedObject var cart: Cart
 
 
     var body: some View {
