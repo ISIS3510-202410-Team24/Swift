@@ -6,6 +6,7 @@ struct RestaurantView: View {
     var restaurant: Restaurant
     @State private var menuItems: [MenuItem] = [] // Estado para almacenar los elementos del menú
     @State private var showAlert = false // Estado para controlar la visibilidad de la alerta
+    @ObservedObject var cart = Cart() // ObservedObject para el carrito
 
 
     var body: some View {
@@ -58,6 +59,15 @@ struct RestaurantView: View {
                     Spacer()
                     Text("$\(menuItem.price, specifier: "%.2f")")
                         .fontWeight(.semibold)
+                    Button(action: {
+                                            cart.addItem(menuItem)
+                                        }) {
+                                            Text("Add to Cart")
+                                                .padding(5)
+                                                .background(Color.blue)
+                                                .foregroundColor(.white)
+                                                .cornerRadius(5)
+                                        }
                 }
             }
             Spacer()

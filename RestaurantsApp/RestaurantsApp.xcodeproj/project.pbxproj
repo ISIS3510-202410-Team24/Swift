@@ -16,6 +16,7 @@
 		170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170631622BA4DB0C00C7FDB1 /* loginView.swift */; };
 		1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1714680C2BA8FBD200255D85 /* FirebaseAuth */; };
 		1714680F2BA901BF00255D85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1714680E2BA901BF00255D85 /* GoogleService-Info.plist */; };
+		1714D3B52BFD3CFC00C5F5EC /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */; };
 		172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BA2BA8BC1E001F3937 /* SideProfileView.swift */; };
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
@@ -82,6 +83,7 @@
 		170631602BA4CB0700C7FDB1 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		170631622BA4DB0C00C7FDB1 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		1714680E2BA901BF00255D85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		172310BA2BA8BC1E001F3937 /* SideProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileView.swift; sourceTree = "<group>"; };
 		172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileHeaderView.swift; sourceTree = "<group>"; };
 		1756E9EA2BCF436D00FDD2EA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				82EDFF2E2BCF3D2B00729696 /* BasketViewModel.swift */,
 				82CA03852BD8796800652803 /* EventualConnectivity.swift */,
 				82CA03872BD87C6B00652803 /* ProfileViewModel.swift */,
+				1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
 				1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */,
 				82EDFF2F2BCF3D2B00729696 /* BasketViewModel.swift in Sources */,
+				1714D3B52BFD3CFC00C5F5EC /* CartViewModel.swift in Sources */,
 				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
@@ -640,7 +644,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 823GE4UB2Y;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -685,7 +689,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 823GE4UB2Y;
+				DEVELOPMENT_TEAM = 9XGG4PG33A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;

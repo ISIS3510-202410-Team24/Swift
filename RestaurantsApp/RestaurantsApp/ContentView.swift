@@ -5,6 +5,8 @@ struct ContentView: View {
     @State private var showProfile = false
     @State private var showBasket = false
     @StateObject var loginModel = LoginViewModel()
+    @StateObject var cart = Cart() // Agrega el carrito de compras como un StateObject
+
     var body: some View {
         
         if loginModel.isLoggedIn{
@@ -33,7 +35,9 @@ struct ContentView: View {
                 BottomNavigationBar()
             }
             SideProfileView(isShowing: $showProfile)
-            basketView(isShowing: $showBasket)
+            if showBasket {
+                            basketView(isShowing: $showBasket,cart: cart ) // Pasa el carrito y el binding del estado
+                        }
             
             
         }
