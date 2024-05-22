@@ -8,16 +8,21 @@
 import Foundation
 import SwiftUI
 
+import Foundation
+import SwiftUI
+
 struct BottomNavigationBar: View {
     @ObservedObject var cart: Cart
     @ObservedObject var restaurnatViewModel : RestaurantViewModel
     @ObservedObject var mapViewModel: MapViewModel
+    @StateObject var viewModel = FavoritesViewModel()
+    
 
     var body: some View {
         // Aquí defines tu barra de navegación inferior
         TabView {
             // Cada elemento de TabView representa una pantalla en tu aplicación
-            homeView()
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
                 }

@@ -140,6 +140,7 @@ struct SideProfileView: View {
                                     .cornerRadius(8)
                                     .sheet(isPresented: $showPreferences) {
                                         PreferencesView(isShowingPreferences: $showPreferences)
+                                            .environmentObject(profileViewModel)
                                     }
                             }
                             
@@ -194,155 +195,157 @@ struct SideProfileView: View {
             }
         }
     }
-    
+}
     struct Constants {
         static let Alerts: Color = Color(red: 0.78, green: 0.59, blue: 0.75)
     }
-}
 
+
+
+struct PreferencesView: View {
+    @State private var selectedOptions: Set<String> = []
+    @EnvironmentObject var profileViewModel: ProfileViewModel
+    @Binding var isShowingPreferences: Bool
     
-    struct PreferencesView: View {
-        @State private var selectedOptions: Set<String> = []
-        @ObservedObject var profileViewModel = ProfileViewModel()
-        @Binding var isShowingPreferences: Bool
-        
-        var body: some View {
-            VStack(spacing: 30) { // Aumenta el espacio entre los elementos
-                Text("Selecciona tus preferencias")
-                    .font(.headline)
-                    .padding()
-                
-                HStack {
-                    // Botón para Vegetariana
-                    Button(action: {
-                        toggleOption("Vegetariana")
-                    }) {
-                        Text("Vegetariana")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Vegetariana") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Vegetariana") ? Constants.Alerts: Color.gray)
-                    .cornerRadius(8)
-                    
-                    // Botón para Comida de mar
-                    Button(action: {
-                        toggleOption("Comida de mar")
-                    }) {
-                        Text("Comida de mar")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Comida de mar") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Comida de mar") ?  Constants.Alerts : Color.gray)
-                    .cornerRadius(8)
-                    
-                    // Agregar más botones para las nuevas preferencias
-                    // Por ejemplo, para hamburguesas
-                    Button(action: {
-                        toggleOption("Hamburguesas")
-                    }) {
-                        Text("Hamburguesas")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Hamburguesas") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Hamburguesas") ?  Constants.Alerts: Color.gray)
-                    .cornerRadius(8)
-                    
-                    // Botón para Pollo
-                    Button(action: {
-                        toggleOption("Pollo")
-                    }) {
-                        Text("Pollo")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Pollo") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Pollo") ? Constants.Alerts : Color.gray)
-                    .cornerRadius(8)
+    var body: some View {
+        VStack(spacing: 30) { // Aumenta el espacio entre los elementos
+            Text("Selecciona tus preferencias")
+                .font(.headline)
+                .padding()
+            
+            HStack {
+                // Botón para Vegetariana
+                Button(action: {
+                    toggleOption("Vegetariana")
+                }) {
+                    Text("Vegetariana")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Vegetariana") ? .white : .black)
                 }
+                .background(selectedOptions.contains("Vegetariana") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
                 
-                HStack {
-                    // Botón para Parrilla
-                    Button(action: {
-                        toggleOption("Parrilla")
-                    }) {
-                        Text("Parrilla")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Parrilla") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Parrilla") ? Constants.Alerts: Color.gray)
-                    .cornerRadius(8)
-                    
-                    // Botón para Mexicana
-                    Button(action: {
-                        toggleOption("Mexicana")
-                    }) {
-                        Text("Mexicana")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Mexicana") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Mexicana") ? Constants.Alerts : Color.gray)
-                    .cornerRadius(8)
-                    
-                    // Botón para Asiática
-                    Button(action: {
-                        toggleOption("Asiática")
-                    }) {
-                        Text("Asiática")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(selectedOptions.contains("Asiática") ? .white : .black)
-                    }
-                    //.background(selectedOptions.contains("Asiática") ? Constants.Alerts : Color.gray)
-                    .cornerRadius(8)
+                // Botón para Comida de mar
+                Button(action: {
+                    toggleOption("Comida de mar")
+                }) {
+                    Text("Comida de mar")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Comida de mar") ? .white : .black)
                 }
+                .background(selectedOptions.contains("Comida de mar") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
                 
-                // Botón Guardar y Cancelar
-                HStack(spacing: 20) { // Aumenta el espacio entre los botones
-                    Button(action: {
-                        let selectedOptionsArray = Array(selectedOptions)
-                        profileViewModel.savePreferences(preferences: selectedOptionsArray)
-                        profileViewModel.savedPreferences = selectedOptionsArray
-                        isShowingPreferences = false
-                    }) {
-                        Text("Guardar")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(.white)
-                    }
-                    .background(Color.green)
-                    .cornerRadius(8)
-                    
-                    Button(action: {
-                        isShowingPreferences = false
-                    }) {
-                        Text("Cancelar")
-                            .fontWeight(.bold)
-                            .padding()
-                            .foregroundColor(.white)
-                    }
-                    .background(Color.red)
-                    .cornerRadius(8)
+                // Agregar más botones para las nuevas preferencias
+                // Por ejemplo, para hamburguesas
+                Button(action: {
+                    toggleOption("Hamburguesas")
+                }) {
+                    Text("Hamburguesas")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Hamburguesas") ? .white : .black)
                 }
+                .background(selectedOptions.contains("Hamburguesas") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
+                
+                // Botón para Pollo
+                Button(action: {
+                    toggleOption("Pollo")
+                }) {
+                    Text("Pollo")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Pollo") ? .white : .black)
+                }
+                .background(selectedOptions.contains("Pollo") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
             }
-            .padding()
-            .frame(maxHeight: .infinity) // Expandir verticalmente
-            .background(Color.white)
-            .cornerRadius(10)
-            .padding()
+            
+            HStack {
+                // Botón para Parrilla
+                Button(action: {
+                    toggleOption("Parrilla")
+                }) {
+                    Text("Parrilla")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Parrilla") ? .white : .black)
+                }
+                .background(selectedOptions.contains("Parrilla") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
+                
+                // Botón para Mexicana
+                Button(action: {
+                    toggleOption("Mexicana")
+                }) {
+                    Text("Mexicana")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Mexicana") ? .white : .black)
+                }
+                .background(selectedOptions.contains("Mexicana") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
+                
+                // Botón para Asiática
+                Button(action: {
+                    toggleOption("Asiática")
+                }) {
+                    Text("Asiática")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(selectedOptions.contains("Asiática") ? .white : .black)
+                }
+                .background(selectedOptions.contains("Asiática") ? Constants.Alerts : Color.gray)
+                .cornerRadius(8)
+            }
+            
+            // Botón Guardar y Cancelar
+            HStack(spacing: 20) { // Aumenta el espacio entre los botones
+                Button(action: {
+                    let selectedOptionsArray = Array(selectedOptions)
+                    profileViewModel.savePreferences(preferences: selectedOptionsArray)
+                    profileViewModel.savedPreferences = selectedOptionsArray
+                    isShowingPreferences = false
+                }) {
+                    Text("Guardar")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+                }
+                .background(Color.green)
+                .cornerRadius(8)
+                
+                Button(action: {
+                    isShowingPreferences = false
+                }) {
+                    Text("Cancelar")
+                        .fontWeight(.bold)
+                        .padding()
+                        .foregroundColor(.white)
+                }
+                .background(Color.red)
+                .cornerRadius(8)
+            }
         }
-        
-        // Función para alternar la selección de una opción
-        private func toggleOption(_ option: String) {
-            if selectedOptions.contains(option) {
-                selectedOptions.remove(option)
-            } else {
-                selectedOptions.insert(option)
-            }
+        .padding()
+        .frame(maxHeight: .infinity) // Expandir verticalmente
+        .background(Color.white)
+        .cornerRadius(10)
+        .padding()
+        .onAppear {
+            selectedOptions = Set(profileViewModel.savedPreferences)
         }
     }
-
+    
+    // Función para alternar la selección de una opción
+    private func toggleOption(_ option: String) {
+        if selectedOptions.contains(option) {
+            selectedOptions.remove(option)
+        } else {
+            selectedOptions.insert(option)
+        }
+    }
+}
