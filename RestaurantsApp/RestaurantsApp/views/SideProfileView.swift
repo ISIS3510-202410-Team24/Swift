@@ -195,11 +195,11 @@ struct SideProfileView: View {
             }
         }
     }
-    
+}
     struct Constants {
         static let Alerts: Color = Color(red: 0.78, green: 0.59, blue: 0.75)
     }
-}
+
 
 
 struct PreferencesView: View {

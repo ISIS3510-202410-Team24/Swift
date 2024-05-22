@@ -44,6 +44,7 @@
 		8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC932B8CDD5C00D1592E /* Assets.xcassets */; };
 		8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */; };
 		825A89022BFDB39D002079F5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */; };
+		825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89032BFDBF76002079F5 /* CartViewModel.swift */; };
 		829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */; };
 		82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03852BD8796800652803 /* EventualConnectivity.swift */; };
 		82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03872BD87C6B00652803 /* ProfileViewModel.swift */; };
@@ -108,6 +109,7 @@
 		8224EC9D2B8CDD5C00D1592E /* RestaurantsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8224ECA72B8CDD5C00D1592E /* RestaurantsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		825A89032BFDBF76002079F5 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		82CA03852BD8796800652803 /* EventualConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventualConnectivity.swift; sourceTree = "<group>"; };
 		82CA03872BD87C6B00652803 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				82CA03852BD8796800652803 /* EventualConnectivity.swift */,
 				82CA03872BD87C6B00652803 /* ProfileViewModel.swift */,
 				825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */,
+				825A89032BFDBF76002079F5 /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
 				7EF990892BADF96000C0D73A /* AnalyticsView.swift in Sources */,
 				82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */,
+				825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */,
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
 				17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */,
