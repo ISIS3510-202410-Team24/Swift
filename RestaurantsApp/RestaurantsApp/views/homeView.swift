@@ -41,7 +41,6 @@ struct DishRow: View {
     var body: some View {
         VStack(alignment: .leading) {
             
-            
             WebImage(url: URL(string: dish.image)) { image in
                          image
                              .resizable()
@@ -50,6 +49,7 @@ struct DishRow: View {
                          // Placeholder mientras se carga la imagen
                          ProgressView()
                      }
+
             
             HStack {
                 Text(String(format: "%.1f", dish.rating))
