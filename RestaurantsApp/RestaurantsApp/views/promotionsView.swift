@@ -50,9 +50,7 @@ struct promotionsView: View {
          }
     
     
-    
-    
-    
+
     
     //ESTRUCTURA DEL VIEW
     struct CouponView: View {

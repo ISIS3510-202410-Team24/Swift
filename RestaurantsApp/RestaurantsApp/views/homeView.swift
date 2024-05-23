@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: FavoritesViewModel
@@ -25,7 +26,7 @@ struct HomeView: View {
                             .padding(.vertical, 10)
                     }
                 }
-                .padding()
+                .padding(.top)
             }
         }
         .onAppear {
@@ -39,11 +40,16 @@ struct DishRow: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Image(dish.image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 150, height: 150)
-                .cornerRadius(10)
+            
+            WebImage(url: URL(string: dish.image)) { image in
+                         image
+                             .resizable()
+                             .aspectRatio(contentMode: .fit)
+                     } placeholder: {
+                         // Placeholder mientras se carga la imagen
+                         ProgressView()
+                     }
+
             
             HStack {
                 Text(String(format: "%.1f", dish.rating))
