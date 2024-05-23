@@ -186,9 +186,7 @@ struct SideProfileView: View {
                         profileViewModel.getProfileName()
                         
                     }
-                    else{
-                        
-                    }
+                    
                 }
                 .alert(isPresented: $showingPreferences) {
                     Alert(
