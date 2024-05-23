@@ -18,6 +18,7 @@ struct SideProfileView: View {
     @State private var isLoadingImage = true
     @State private var showPreferences = false
     @State private var isInternetAvailable = true
+   
     
     var body: some View {
         ZStack {
@@ -91,13 +92,15 @@ struct SideProfileView: View {
                         }
                         
                         VStack(alignment: .center, spacing: 10) {
+                            
+                            
                             // Nombre del perfil
+                            
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(Color.white)
                                 .frame(width: 250, height: 50)
                                 .overlay(
                                     Text(profileViewModel.profileName) // Utiliza el nombre de perfil del ViewModel
-                                        .font(.title)
                                         .fontWeight(.bold)
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 20)
@@ -175,6 +178,16 @@ struct SideProfileView: View {
                     if !isInternetAvailable {
                         // Muestra una alerta si no hay conexión a Internet
                         showingPreferences = true
+                        profileViewModel.getPreferences { preferences in
+                            if let preferences = preferences {
+                                profileViewModel.savedPreferences = preferences // Actualiza las preferencias del ViewModel
+                            }
+                        }
+                        profileViewModel.getProfileName()
+                        
+                    }
+                    else{
+                        
                     }
                 }
                 .alert(isPresented: $showingPreferences) {
