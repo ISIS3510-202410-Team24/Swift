@@ -12,6 +12,12 @@ import FirebaseFirestore
 class PromotionViewModel: ObservableObject {
     @Published var coupons: [Coupon] = []
 
+    /*
+     Multithread:
+    La función getDocuments de la instancia de Firestore hace una llamada asíncrona para obtener los documentos de la colección "cupones" en Firestore. Esta llamada no bloquea el hilo principal de la aplicación, lo que significa que el flujo de ejecución continúa mientras Firestore realiza la operación de obtención en segundo plano.
+     
+     Una vez que se completa el procesamiento de documentos y se obtienen los cupones, se utiliza DispatchQueue.main.async para devolver la actualización de la interfaz de usuario al hilo principal. Esto es importante porque la interfaz de usuario solo debe actualizarse en el hilo principal. Dentro del bloque async, se asigna fetchedCoupons a self.coupons, lo que actualiza la interfaz de usuario con los datos recuperados. Además, se imprime un mensaje indicando que los cupones han sido recuperados.
+    */
     func fetchCouponsFromFirestore() {
         let db = Firestore.firestore()
         db.collection("cupones").getDocuments { querySnapshot, error in

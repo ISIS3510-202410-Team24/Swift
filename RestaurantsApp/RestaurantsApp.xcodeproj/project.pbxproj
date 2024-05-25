@@ -21,7 +21,10 @@
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
 		1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */; };
 		17956E6C2BD1F45000F464FA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17956E6B2BD1F45000F464FA /* MapViewModel.swift */; };
+		17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B8FF612BEADEB100627AC3 /* RestaurantView.swift */; };
+		17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 17B8FF632BEAF0B600627AC3 /* FirebaseStorage */; };
 		17C473282B92632700FFFF5C /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17C473272B92632700FFFF5C /* Launch Screen.storyboard */; };
+		17F5041B2BF425E400A526F9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */; };
 		7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */; };
 		7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E262DC22BE6CD9800108229 /* RatingView.swift */; };
 		7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7E262DC42BE6D42200108229 /* FirebaseStorage */; };
@@ -40,6 +43,8 @@
 		8224EC922B8CDD5900D1592E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC912B8CDD5900D1592E /* Item.swift */; };
 		8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC932B8CDD5C00D1592E /* Assets.xcassets */; };
 		8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */; };
+		825A89022BFDB39D002079F5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */; };
+		825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89032BFDBF76002079F5 /* CartViewModel.swift */; };
 		829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */; };
 		82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03852BD8796800652803 /* EventualConnectivity.swift */; };
 		82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03872BD87C6B00652803 /* ProfileViewModel.swift */; };
@@ -85,6 +90,7 @@
 		1756E9ED2BCF4C5D00FDD2EA /* restaurantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = restaurantModel.swift; sourceTree = "<group>"; };
 		1756E9EF2BCF4FCF00FDD2EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		17956E6B2BD1F45000F464FA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		17B8FF612BEADEB100627AC3 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		17C473272B92632700FFFF5C /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		7E262DC22BE6CD9800108229 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		7E484D052BA62C2E0005C093 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
@@ -102,6 +108,8 @@
 		8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8224EC9D2B8CDD5C00D1592E /* RestaurantsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8224ECA72B8CDD5C00D1592E /* RestaurantsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		825A89032BFDBF76002079F5 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		82CA03852BD8796800652803 /* EventualConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventualConnectivity.swift; sourceTree = "<group>"; };
 		82CA03872BD87C6B00652803 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -125,7 +133,9 @@
 				7EF990832BADF8FD00C0D73A /* FirebaseAnalytics in Frameworks */,
 				7E262DC82BE6DA3900108229 /* Reachability in Frameworks */,
 				7E01E74B2BAC69C8000AE761 /* FirebaseFirestore in Frameworks */,
+				17B8FF642BEAF0B600627AC3 /* FirebaseStorage in Frameworks */,
 				7E262DC52BE6D42200108229 /* FirebaseStorage in Frameworks */,
+				17F5041B2BF425E400A526F9 /* SDWebImageSwiftUI in Frameworks */,
 				7EF990852BADF8FD00C0D73A /* FirebaseAnalyticsSwift in Frameworks */,
 				7EF990872BADF91E00C0D73A /* AdSupport.framework in Frameworks */,
 			);
@@ -170,6 +180,7 @@
 				172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */,
 				1756E9EA2BCF436D00FDD2EA /* MapView.swift */,
 				82EDFF2C2BCF273300729696 /* basketView.swift */,
+				17B8FF612BEADEB100627AC3 /* RestaurantView.swift */,
 				7E262DC22BE6CD9800108229 /* RatingView.swift */,
 			);
 			path = views;
@@ -287,6 +298,8 @@
 				82EDFF2E2BCF3D2B00729696 /* BasketViewModel.swift */,
 				82CA03852BD8796800652803 /* EventualConnectivity.swift */,
 				82CA03872BD87C6B00652803 /* ProfileViewModel.swift */,
+				825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */,
+				825A89032BFDBF76002079F5 /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -314,8 +327,10 @@
 				7EF990822BADF8FD00C0D73A /* FirebaseAnalytics */,
 				7EF990842BADF8FD00C0D73A /* FirebaseAnalyticsSwift */,
 				7E38EE642BDAAD6500CE6941 /* Kingfisher */,
+				17B8FF632BEAF0B600627AC3 /* FirebaseStorage */,
 				7E262DC42BE6D42200108229 /* FirebaseStorage */,
 				7E262DC72BE6DA3900108229 /* Reachability */,
+				17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */,
 			);
 			productName = RestaurantsApp;
 			productReference = 8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */;
@@ -393,6 +408,7 @@
 				1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7E38EE632BDAAD6500CE6941 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */,
+				17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 8224EC8B2B8CDD5900D1592E /* Products */;
 			projectDirPath = "";
@@ -438,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825A89022BFDB39D002079F5 /* FavoritesViewModel.swift in Sources */,
 				1706315D2BA4C50A00C7FDB1 /* restaurantsView.swift in Sources */,
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
 				829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */,
@@ -463,8 +480,10 @@
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
 				7EF990892BADF96000C0D73A /* AnalyticsView.swift in Sources */,
 				82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */,
+				825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */,
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
+				17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */,
 				7E262DC32BE6CD9800108229 /* RatingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,7 +648,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4D7Z4HN354;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -646,13 +665,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppLuis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -674,7 +693,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 4D7Z4HN354;
+				DEVELOPMENT_TEAM = 823GE4UB2Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -691,13 +710,13 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
 				NEW_SETTING = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppJuanes;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moviles.RestaurantsAppLuis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -848,6 +867,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 		7E262DC62BE6DA3900108229 /* XCRemoteSwiftPackageReference "Reachability" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
@@ -871,6 +898,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		17B8FF632BEAF0B600627AC3 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1714680B2BA8FBD200255D85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		17F5041A2BF425E400A526F9 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17F504192BF425E400A526F9 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 		7E01E74A2BAC69C8000AE761 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

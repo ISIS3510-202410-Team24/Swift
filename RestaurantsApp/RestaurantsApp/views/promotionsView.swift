@@ -50,9 +50,7 @@ struct promotionsView: View {
          }
     
     
-    
-    
-    
+
     
     //ESTRUCTURA DEL VIEW
     struct CouponView: View {
@@ -234,7 +232,7 @@ struct CouponMessageView: View {
                 Text("Explorar más cupones")
                     .foregroundColor(.white)
                     .padding()
-                    .background(Constants.Alerts)
+                    //.background(Constants.Alerts)
                     .cornerRadius(10)
             }
             .padding(.top, 20)

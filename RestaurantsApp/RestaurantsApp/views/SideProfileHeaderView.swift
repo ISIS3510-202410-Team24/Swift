@@ -58,15 +58,7 @@ struct SideProfileHeaderView: View {
                                 )
                                 .onAppear {
                                     // Llama a la función fetchData para obtener el nombre del usuario
-                                    profileViewModel.getNameUser { (nombre) in
-                                        if let nombre = nombre {
-                                            // Asigna el nombre del usuario al estado profileName
-                                            profileName = nombre
-                                        } else {
-                                            // Si no se puede obtener el nombre, muestra un mensaje de error o realiza otra acción apropiada
-                                            print("No se pudo obtener el nombre del usuario.")
-                                        }
-                                    }
+                                    profileViewModel.getProfileName ()
                                 }
                             
                             // Correo electrónico del perfil
@@ -91,7 +83,7 @@ struct SideProfileHeaderView: View {
                             
                             // Poner acá el restaurante del que más pide ordenes
                             
-                            
+                        
                             
                             
                         }
