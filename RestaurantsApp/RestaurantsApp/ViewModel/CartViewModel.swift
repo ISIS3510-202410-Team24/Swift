@@ -1,7 +1,7 @@
 import SwiftUI
 import Combine
 
-struct CartItem: Identifiable {
+struct CartItem: Identifiable, Codable {
     let id: String
     let name: String
     let price: Double
@@ -9,7 +9,17 @@ struct CartItem: Identifiable {
 }
 
 class Cart: ObservableObject {
-    @Published var items: [CartItem] = []
+    @Published var items: [CartItem] = [] {
+        didSet {
+            saveItems()
+        }
+    }
+
+    private let userDefaultsKey = "cartItems"
+
+    init() {
+        loadItems()
+    }
 
     func addItem(_ item: MenuItem) {
         if let index = items.firstIndex(where: { $0.id == item.id }) {
@@ -18,7 +28,6 @@ class Cart: ObservableObject {
             let cartItem = CartItem(id: item.id, name: item.name, price: item.price, quantity: 1)
             items.append(cartItem)
         }
-        print(item.name)
     }
 
     func removeItem(_ item: CartItem) {
@@ -37,5 +46,18 @@ class Cart: ObservableObject {
 
     var total: Double {
         items.reduce(0) { $0 + $1.price * Double($1.quantity) }
+    }
+
+    private func saveItems() {
+        if let encoded = try? JSONEncoder().encode(items) {
+            UserDefaults.standard.set(encoded, forKey: userDefaultsKey)
+        }
+    }
+
+    private func loadItems() {
+        if let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+           let decoded = try? JSONDecoder().decode([CartItem].self, from: data) {
+            items = decoded
+        }
     }
 }

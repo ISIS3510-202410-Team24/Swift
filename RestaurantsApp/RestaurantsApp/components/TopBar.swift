@@ -19,8 +19,9 @@ struct HeaderView: View {
         ZStack{
             
             HStack (alignment: .center, spacing: 10) {
-                Button(action: profileButtonAction) {
-                    Image(systemName: "line.3.horizontal")
+                
+                Button(action: basketButtonAction) {
+                    Image(systemName: "cart")
                         .font(.title)
                 }
                 .padding(.all)
@@ -29,10 +30,12 @@ struct HeaderView: View {
                 
                 Spacer()
                 
-                Button(action: basketButtonAction) {
-                    Image(systemName: "cart")
+                Button(action: profileButtonAction) {
+                    Image(systemName: "line.3.horizontal")
                         .font(.title)
                 }
+                
+                
                 Button(action: profileButtonAction) {
                     Image(systemName: "person.circle")
                         .font(.title)
