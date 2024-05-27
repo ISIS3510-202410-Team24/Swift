@@ -16,7 +16,6 @@
 		170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170631622BA4DB0C00C7FDB1 /* loginView.swift */; };
 		1714680D2BA8FBD200255D85 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1714680C2BA8FBD200255D85 /* FirebaseAuth */; };
 		1714680F2BA901BF00255D85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1714680E2BA901BF00255D85 /* GoogleService-Info.plist */; };
-		1714D3B52BFD3CFC00C5F5EC /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */; };
 		172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BA2BA8BC1E001F3937 /* SideProfileView.swift */; };
 		172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */; };
 		1756E9EB2BCF436D00FDD2EA /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1756E9EA2BCF436D00FDD2EA /* MapView.swift */; };
@@ -44,6 +43,8 @@
 		8224EC922B8CDD5900D1592E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8224EC912B8CDD5900D1592E /* Item.swift */; };
 		8224EC942B8CDD5C00D1592E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC932B8CDD5C00D1592E /* Assets.xcassets */; };
 		8224EC982B8CDD5C00D1592E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */; };
+		825A89022BFDB39D002079F5 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */; };
+		825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825A89032BFDBF76002079F5 /* CartViewModel.swift */; };
 		829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */; };
 		82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03852BD8796800652803 /* EventualConnectivity.swift */; };
 		82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA03872BD87C6B00652803 /* ProfileViewModel.swift */; };
@@ -83,7 +84,6 @@
 		170631602BA4CB0700C7FDB1 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		170631622BA4DB0C00C7FDB1 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		1714680E2BA901BF00255D85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		172310BA2BA8BC1E001F3937 /* SideProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileView.swift; sourceTree = "<group>"; };
 		172310BC2BA8BE1D001F3937 /* SideProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideProfileHeaderView.swift; sourceTree = "<group>"; };
 		1756E9EA2BCF436D00FDD2EA /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -108,6 +108,8 @@
 		8224EC972B8CDD5C00D1592E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8224EC9D2B8CDD5C00D1592E /* RestaurantsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8224ECA72B8CDD5C00D1592E /* RestaurantsAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RestaurantsAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		825A89032BFDBF76002079F5 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		829DAAA92BAE17E200B60BB6 /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		82CA03852BD8796800652803 /* EventualConnectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventualConnectivity.swift; sourceTree = "<group>"; };
 		82CA03872BD87C6B00652803 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -296,7 +298,8 @@
 				82EDFF2E2BCF3D2B00729696 /* BasketViewModel.swift */,
 				82CA03852BD8796800652803 /* EventualConnectivity.swift */,
 				82CA03872BD87C6B00652803 /* ProfileViewModel.swift */,
-				1714D3B42BFD3CFC00C5F5EC /* CartViewModel.swift */,
+				825A89012BFDB39D002079F5 /* FavoritesViewModel.swift */,
+				825A89032BFDBF76002079F5 /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -451,13 +454,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				825A89022BFDB39D002079F5 /* FavoritesViewModel.swift in Sources */,
 				1706315D2BA4C50A00C7FDB1 /* restaurantsView.swift in Sources */,
 				170631562BA4C1FA00C7FDB1 /* BottomNavigationBar.swift in Sources */,
 				829DAAAA2BAE17E200B60BB6 /* PromotionViewModel.swift in Sources */,
 				172310BD2BA8BE1D001F3937 /* SideProfileHeaderView.swift in Sources */,
 				1756E9EE2BCF4C5D00FDD2EA /* restaurantModel.swift in Sources */,
 				82EDFF2F2BCF3D2B00729696 /* BasketViewModel.swift in Sources */,
-				1714D3B52BFD3CFC00C5F5EC /* CartViewModel.swift in Sources */,
 				93CB5E882BAB7EC6008739CF /* OrderViewModel.swift in Sources */,
 				82CA03882BD87C6B00652803 /* ProfileViewModel.swift in Sources */,
 				8224EC902B8CDD5900D1592E /* ContentView.swift in Sources */,
@@ -477,6 +480,7 @@
 				82D9DA592B96AD710068A8F5 /* Search_page.swift in Sources */,
 				7EF990892BADF96000C0D73A /* AnalyticsView.swift in Sources */,
 				82CA03862BD8796800652803 /* EventualConnectivity.swift in Sources */,
+				825A89042BFDBF76002079F5 /* CartViewModel.swift in Sources */,
 				93C854862BAB577000EF86F7 /* FireStoreManager.swift in Sources */,
 				93CB5E862BAB74DB008739CF /* RestaurantViewModel.swift in Sources */,
 				17B8FF622BEADEB100627AC3 /* RestaurantView.swift in Sources */,
@@ -644,7 +648,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 4D7Z4HN354;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
@@ -689,7 +693,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"RestaurantsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = 9XGG4PG33A;
+				DEVELOPMENT_TEAM = 4D7Z4HN354;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RestaurantsApp/Info.plist;
