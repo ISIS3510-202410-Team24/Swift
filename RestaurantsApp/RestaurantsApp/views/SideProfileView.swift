@@ -222,7 +222,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Vegetariana") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Vegetariana") ? Constants.Alerts: Color.gray)
+                    //.background(selectedOptions.contains("Vegetariana") ? Constants.Alerts: Color.gray)
                     .cornerRadius(8)
                     
                     // Botón para Comida de mar
@@ -234,7 +234,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Comida de mar") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Comida de mar") ?  Constants.Alerts : Color.gray)
+                    //.background(selectedOptions.contains("Comida de mar") ?  Constants.Alerts : Color.gray)
                     .cornerRadius(8)
                     
                     // Agregar más botones para las nuevas preferencias
@@ -247,7 +247,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Hamburguesas") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Hamburguesas") ?  Constants.Alerts: Color.gray)
+                    //.background(selectedOptions.contains("Hamburguesas") ?  Constants.Alerts: Color.gray)
                     .cornerRadius(8)
                     
                     // Botón para Pollo
@@ -259,7 +259,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Pollo") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Pollo") ? Constants.Alerts : Color.gray)
+                    //.background(selectedOptions.contains("Pollo") ? Constants.Alerts : Color.gray)
                     .cornerRadius(8)
                 }
                 
@@ -273,7 +273,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Parrilla") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Parrilla") ? Constants.Alerts: Color.gray)
+                    //.background(selectedOptions.contains("Parrilla") ? Constants.Alerts: Color.gray)
                     .cornerRadius(8)
                     
                     // Botón para Mexicana
@@ -285,7 +285,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Mexicana") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Mexicana") ? Constants.Alerts : Color.gray)
+                    //.background(selectedOptions.contains("Mexicana") ? Constants.Alerts : Color.gray)
                     .cornerRadius(8)
                     
                     // Botón para Asiática
@@ -297,7 +297,7 @@ struct SideProfileView: View {
                             .padding()
                             .foregroundColor(selectedOptions.contains("Asiática") ? .white : .black)
                     }
-                    .background(selectedOptions.contains("Asiática") ? Constants.Alerts : Color.gray)
+                    //.background(selectedOptions.contains("Asiática") ? Constants.Alerts : Color.gray)
                     .cornerRadius(8)
                 }
                 

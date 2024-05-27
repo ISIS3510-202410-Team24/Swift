@@ -18,6 +18,7 @@ class Cart: ObservableObject {
             let cartItem = CartItem(id: item.id, name: item.name, price: item.price, quantity: 1)
             items.append(cartItem)
         }
+        print(item.name)
     }
 
     func removeItem(_ item: CartItem) {

@@ -9,6 +9,10 @@ import Foundation
 import SwiftUI
 
 struct BottomNavigationBar: View {
+    @ObservedObject var cart: Cart
+    @ObservedObject var restaurnatViewModel : RestaurantViewModel
+    @ObservedObject var mapViewModel: MapViewModel
+
     var body: some View {
         // Aquí defines tu barra de navegación inferior
         TabView {
@@ -22,7 +26,7 @@ struct BottomNavigationBar: View {
                     Image(systemName: "percent")
                 }
             
-            MapView()
+            MapView(restaurantViewModel: restaurnatViewModel,mapViewModel: mapViewModel,cart: cart)
                 .tabItem {
                     Image(systemName: "storefront")
                 }
