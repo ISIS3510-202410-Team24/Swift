@@ -13,6 +13,17 @@ struct RestaurantsAppApp: App {
     
     init(){
         FirebaseApp.configure()
+        
+
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            FirebaseApp.configure()
+            FirestoreManager.shared.enviarErroresEnCache()
+            return true
+        }
+
+        func applicationDidBecomeActive(_ application: UIApplication) {
+            FirestoreManager.shared.enviarErroresEnCache()
+        }
     }
     
     var sharedModelContainer: ModelContainer = {
@@ -35,3 +46,5 @@ struct RestaurantsAppApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
+
+

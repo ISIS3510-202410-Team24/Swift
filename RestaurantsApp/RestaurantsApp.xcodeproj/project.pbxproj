@@ -34,6 +34,7 @@
 		7EA3AF692BACD04000D0C9E2 /* RestaurantsAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3AF682BACD04000D0C9E2 /* RestaurantsAppTests.swift */; };
 		7EA3AF6B2BACD08B00D0C9E2 /* RestaurantsAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3AF6A2BACD08B00D0C9E2 /* RestaurantsAppUITests.swift */; };
 		7EA3AF6D2BACD09600D0C9E2 /* RestaurantsAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA3AF6C2BACD09600D0C9E2 /* RestaurantsAppUITestsLaunchTests.swift */; };
+		7EEBB7512C0549B500BCE0F8 /* ReportErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEBB7502C0549B500BCE0F8 /* ReportErrorView.swift */; };
 		7EF990832BADF8FD00C0D73A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF990822BADF8FD00C0D73A /* FirebaseAnalytics */; };
 		7EF990852BADF8FD00C0D73A /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF990842BADF8FD00C0D73A /* FirebaseAnalyticsSwift */; };
 		7EF990872BADF91E00C0D73A /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF990862BADF91E00C0D73A /* AdSupport.framework */; };
@@ -97,6 +98,7 @@
 		7EA3AF682BACD04000D0C9E2 /* RestaurantsAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppTests.swift; sourceTree = "<group>"; };
 		7EA3AF6A2BACD08B00D0C9E2 /* RestaurantsAppUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITests.swift; sourceTree = "<group>"; };
 		7EA3AF6C2BACD09600D0C9E2 /* RestaurantsAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantsAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7EEBB7502C0549B500BCE0F8 /* ReportErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportErrorView.swift; sourceTree = "<group>"; };
 		7EF990862BADF91E00C0D73A /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.2.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		7EF990882BADF96000C0D73A /* AnalyticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsView.swift; sourceTree = "<group>"; };
 		8224EC8A2B8CDD5900D1592E /* RestaurantsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RestaurantsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 				82EDFF2C2BCF273300729696 /* basketView.swift */,
 				17B8FF612BEADEB100627AC3 /* RestaurantView.swift */,
 				7E262DC22BE6CD9800108229 /* RatingView.swift */,
+				7EEBB7502C0549B500BCE0F8 /* ReportErrorView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 				172310BB2BA8BC1E001F3937 /* SideProfileView.swift in Sources */,
 				93C854842BAB3EC400EF86F7 /* LoginViewModel.swift in Sources */,
 				82EDFF2D2BCF273300729696 /* basketView.swift in Sources */,
+				7EEBB7512C0549B500BCE0F8 /* ReportErrorView.swift in Sources */,
 				170631632BA4DB0C00C7FDB1 /* loginView.swift in Sources */,
 				1706315F2BA4C52200C7FDB1 /* ordersView.swift in Sources */,
 				170631592BA4C2DC00C7FDB1 /* promotionsView.swift in Sources */,
